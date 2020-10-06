@@ -137,11 +137,10 @@ end)
 
 -- 左 1/3（横屏）或上 1/3（竖屏）
 hs.hotkey.bind({"alt", "ctrl"}, "D", function()
-    -- 获取当前窗口所在屏幕
-    screen = hs.screen.mainScreen()
-    max = screen:frame()
     local win = hs.window.focusedWindow()
     local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
     -- 如果为竖屏
     if (isVerticalScreen(screen)) then
         f.x = max.x
@@ -160,11 +159,10 @@ end)
 
 -- 中 1/3
 hs.hotkey.bind({"alt", "ctrl"}, "F", function()
-    -- 获取当前窗口所在屏幕
-    screen = hs.screen.mainScreen()
-    max = screen:frame()
     local win = hs.window.focusedWindow()
     local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
     -- 如果为竖屏
     if (isVerticalScreen(screen)) then
         f.x = max.x
@@ -183,11 +181,10 @@ end)
 
 -- 右 1/3（横屏）或下 1/3（竖屏）
 hs.hotkey.bind({"alt", "ctrl"}, "G", function()
-    -- 获取当前窗口所在屏幕
-    screen = hs.screen.mainScreen()
-    max = screen:frame()
     local win = hs.window.focusedWindow()
     local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
     -- 如果为竖屏
     if (isVerticalScreen(screen)) then
         f.x = max.x
@@ -206,11 +203,10 @@ end)
 
 -- 左 2/3（横屏）或上 2/3（竖屏）
 hs.hotkey.bind({"alt", "ctrl"}, "E", function()
-    -- 获取当前窗口所在屏幕
-    screen = hs.screen.mainScreen()
-    max = screen:frame()
     local win = hs.window.focusedWindow()
     local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
     -- 如果为竖屏
     if (isVerticalScreen(screen)) then
         f.x = max.x
@@ -229,11 +225,10 @@ end)
 
 -- 右 2/3（横屏）或下 2/3（竖屏）
 hs.hotkey.bind({"alt", "ctrl"}, "T", function()
-    -- 获取当前窗口所在屏幕
-    screen = hs.screen.mainScreen()
-    max = screen:frame()
     local win = hs.window.focusedWindow()
     local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
     -- 如果为竖屏
     if (isVerticalScreen(screen)) then
         f.x = max.x
@@ -303,11 +298,6 @@ end)
 hs.hotkey.bind({"alt", "ctrl"}, "-", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
-    -- local screen = win:screen()
-    -- local max = screen:frame()
-
-    -- f.x = max.x + (max.w / 4)
-    -- f.y = max.y + (max.h / 4)
     f.w = f.w - 40
     f.h = f.h - 40
     f.x = f.x + 20
