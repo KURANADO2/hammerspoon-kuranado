@@ -3,10 +3,15 @@
 ## Hammerspoon 作用
 - 替代 Magnet 进行窗口移动
 之前一直用 Magnet 移动窗口，使用 Hammerspoon 之后完全可以替代 Magnet，以下为 Magnet 横屏和竖屏分别支持的快捷键截图
+
 横屏：
+
 ![image](./images/horizontal.png)
+
 竖屏：
+
 ![image](./images/vertical.png)
+
 - 为应用配置快捷键，比 ⌘⇥ 和 Alfred 切换程序更高效（建议只为高频使用的一些软件分配快捷键）
 
 ## 个人配置快捷键列表
