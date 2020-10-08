@@ -45,10 +45,21 @@
 ⌥T|打开 iTerm2
 ⌥M|打开 MailMaster
 ⌥P|打开 Postman
+⌥O|打开 Word
+⌥E|打开 Excel
 
 ## ## 个人配置文件
 
 见 GitHub：[init.lua](init.lua)
+
+## 关于应用 bundle id
+
+上面配置中使用快捷键切换应用，需要拿到应用的 bundle id（请注意 bundle id 配置到 hammerspoon 中需要区分大小写，否则 console 会报错），可通过如下方式拿到：
+```
+osascript -e 'id of app "Name of App"'
+```
+
+![image](./images/bundleid.png)
 
 ## 参考
 - [学长博客 - OSX--OSX应用快速切换方案](https://mrdear.cn/posts/osx_app_switcher.html)
@@ -59,3 +70,4 @@
 - [Hammerspoon - 岂止于窗口管理](https://zhuanlan.zhihu.com/p/72499152)
 - [hammerspoon-init](https://github.com/rtoshiro/hammerspoon-init)
 - [菜鸟教程 - Lua 教程](https://www.runoob.com/lua/lua-tutorial.html)
+- [Easily see any app’s bundle identifier](https://robservatory.com/easily-see-any-apps-bundle-identifier/)

@@ -365,6 +365,12 @@ end)
 hs.hotkey.bind({ "alt" }, "p", function()
     toggleAppByBundleId("com.postmanlabs.mac")
 end)
+hs.hotkey.bind({ "alt" }, "o", function()
+    toggleAppByBundleId("com.microsoft.Word")
+end)
+hs.hotkey.bind({ "alt" }, "e", function()
+    toggleAppByBundleId("com.microsoft.Excel")
+end)
 
 -- 鼠标位置
 mousePositions = {}
