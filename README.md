@@ -47,6 +47,7 @@
 ⌥P|打开 Postman
 ⌥O|打开 Word
 ⌥E|打开 Excel
+⌥S|打开 SecureCRT
 
 ## ## 个人配置文件
 
