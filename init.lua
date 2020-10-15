@@ -371,6 +371,9 @@ end)
 hs.hotkey.bind({ "alt" }, "e", function()
     toggleAppByBundleId("com.microsoft.Excel")
 end)
+hs.hotkey.bind({ "alt" }, "s", function()
+    toggleAppByBundleId("com.vandyke.SecureCRT")
+end)
 
 -- 鼠标位置
 mousePositions = {}
