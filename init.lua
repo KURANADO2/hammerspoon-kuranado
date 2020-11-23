@@ -374,6 +374,9 @@ end)
 hs.hotkey.bind({ "alt" }, "s", function()
     toggleAppByBundleId("com.vandyke.SecureCRT")
 end)
+hs.hotkey.bind({ "alt" }, "l", function()
+    toggleAppByBundleId("com.rockysandstudio.Leaf")
+end)
 
 -- 鼠标位置
 mousePositions = {}
