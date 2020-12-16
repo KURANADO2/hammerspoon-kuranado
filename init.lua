@@ -377,6 +377,9 @@ end)
 hs.hotkey.bind({ "alt" }, "l", function()
     toggleAppByBundleId("com.rockysandstudio.Leaf")
 end)
+hs.hotkey.bind({ "alt" }, "y", function()
+    toggleAppByBundleId("com.jetbrains.pycharm")
+end)
 
 -- 鼠标位置
 mousePositions = {}
