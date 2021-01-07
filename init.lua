@@ -380,6 +380,9 @@ end)
 hs.hotkey.bind({ "alt" }, "y", function()
     toggleAppByBundleId("com.jetbrains.pycharm")
 end)
+hs.hotkey.bind({ "alt" }, "r", function()
+    toggleAppByBundleId("me.qii404.another-redis-desktop-manager")
+end)
 
 -- 鼠标位置
 mousePositions = {}
