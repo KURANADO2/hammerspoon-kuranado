@@ -1,5 +1,14 @@
 [TOC]
 
+## 使用
+```
+cd ~/.hammerspoon
+git clone https://github.com/KURANADO2/hammerspoon-kuranado.git
+mv hammerspoon-kuranado/* .
+mv hammerspoon-kuranado/.git .
+mv hammerspoon-kuranado/.gitignore .
+```
+
 ## Hammerspoon 作用
 - 替代 Magnet 进行窗口移动
 之前一直用 Magnet 移动窗口，使用 Hammerspoon 之后完全可以替代 Magnet，以下为 Magnet 横屏和竖屏分别支持的快捷键截图
