@@ -14,10 +14,28 @@ myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConf
 hs.alert.show("Config loaded")
 
 -- 设置显示器（显示器名称可通过在 Hammerspoon Console 控制台中输入 hs.screen.allScreens()[1]:name() 和 hs.screen.allScreens()[2]:name() 得到，更多显示器依次类推）
+-- 获取显示器数目
+local monitor_num = #hs.screen.allScreens()
 -- 设置主显示器
 local main_monitor = hs.screen.allScreens()[1]:name()
 -- 设置副显示器
-local second_monitor = hs.screen.allScreens()[2]:name()
+local second_monitor = nil
+if (monitor_num >= 2)
+then
+    second_monitor = hs.screen.allScreens()[2]:name()
+end
+-- 设置第三个显示器（暂未使用）
+local thrid_monitor = nil
+if (monitor_num >= 3)
+then
+    thrid_monitor = hs.screen.allScreens()[3]:name()
+end
+-- 设置第四个显示器（暂未使用）
+local fourth_monitor = nil
+if (monitor_num >= 4)
+then
+    fourth_monitor = hs.screen.allScreens()[4]:name()
+end
 
 -- 关闭动画持续时间
 hs.window.animationDuration = 0
