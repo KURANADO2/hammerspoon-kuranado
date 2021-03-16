@@ -17,24 +17,24 @@ hs.alert.show("Config loaded")
 -- 获取显示器数目
 local monitor_num = #hs.screen.allScreens()
 -- 设置主显示器
-local main_monitor = hs.screen.allScreens()[1]:name()
+local main_monitor = hs.screen.allScreens()[1]:id()
 -- 设置副显示器
 local second_monitor = nil
 if (monitor_num >= 2)
 then
-    second_monitor = hs.screen.allScreens()[2]:name()
+    second_monitor = hs.screen.allScreens()[2]:id()
 end
 -- 设置第三个显示器（暂未使用）
 local thrid_monitor = nil
 if (monitor_num >= 3)
 then
-    thrid_monitor = hs.screen.allScreens()[3]:name()
+    thrid_monitor = hs.screen.allScreens()[3]:id()
 end
 -- 设置第四个显示器（暂未使用）
 local fourth_monitor = nil
 if (monitor_num >= 4)
 then
-    fourth_monitor = hs.screen.allScreens()[4]:name()
+    fourth_monitor = hs.screen.allScreens()[4]:id()
 end
 
 -- 关闭动画持续时间
