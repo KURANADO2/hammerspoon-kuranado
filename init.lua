@@ -408,7 +408,7 @@ mousePositions = {}
 function toggleAppByBundleId(appBundleID)
     -- 获取当前最靠前的应用,保存鼠标位置
     local frontMostApp = hs.application.frontmostApplication()
-    mousePositions[frontMostApp:mainWindow():id()] = hs.mouse.getAbsolutePosition()
+    mousePositions[frontMostApp:mainWindow():id()] = hs.mouse.absolutePosition
 
     -- 两者重复时,寻找下一个该窗口
     if frontMostApp:bundleID() == appBundleID then
@@ -454,5 +454,5 @@ function setMouseToCenter(frontMostApp)
     end
     local mainFrame = mainWindow:frame()
     local mainPoint = hs.geometry.point(mainFrame.x + mainFrame.w /2, mainFrame.y + mainFrame.h /2)
-    hs.mouse.setAbsolutePosition(mainPoint)
+    hs.mouse.absolutePosition(mainPoint)
 end
