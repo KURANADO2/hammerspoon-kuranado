@@ -329,7 +329,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
     win:maximize()
 end)
 
--- 主屏副屏之间的窗口移动（适用于主屏物理位置在右，副屏物理位置在左的显示器摆放布局，若不是该布局，则请手动修改下面代码以满足需求）
+-- 主屏副屏之间的窗口移动（适用于主屏物理位置在右，副屏物理位置在左的显示器摆放布局，若不是该布局，则在系统偏好设置 -> 显示器 -> 排列下，将白色的条块拖动到右边的显示器顶部）
 -- 主屏窗口移动到副屏
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
     local win = hs.window.focusedWindow()
