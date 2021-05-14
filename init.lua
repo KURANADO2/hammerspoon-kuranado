@@ -153,6 +153,132 @@ hs.hotkey.bind({"alt", "ctrl"}, "K", function()
     win:setFrame(f)
 end)
 
+-- 1/9
+hs.hotkey.bind({"alt", "ctrl"}, "1", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 2/9
+hs.hotkey.bind({"alt", "ctrl"}, "2", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3)
+    f.y = max.y
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 3/9
+hs.hotkey.bind({"alt", "ctrl"}, "3", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3) * 2
+    f.y = max.y
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 4/9
+hs.hotkey.bind({"alt", "ctrl"}, "4", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y + (max.h / 3)
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 5/9
+hs.hotkey.bind({"alt", "ctrl"}, "5", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3)
+    f.y = max.y + (max.h / 3)
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 6/9
+hs.hotkey.bind({"alt", "ctrl"}, "6", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3) * 2
+    f.y = max.y + (max.h / 3)
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 7/9
+hs.hotkey.bind({"alt", "ctrl"}, "7", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y + (max.h / 3) * 2
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 8/9
+hs.hotkey.bind({"alt", "ctrl"}, "8", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3)
+    f.y = max.y + (max.h / 3) * 2
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
+-- 9/9
+hs.hotkey.bind({"alt", "ctrl"}, "9", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x + (max.w / 3) * 2
+    f.y = max.y + (max.h / 3) * 2
+    f.w = max.w / 3
+    f.h = max.h / 3
+    win:setFrame(f)
+end)
+
 -- 左 1/3（横屏）或上 1/3（竖屏）
 hs.hotkey.bind({"alt", "ctrl"}, "D", function()
     local win = hs.window.focusedWindow()
@@ -391,9 +517,6 @@ hs.hotkey.bind({ "alt" }, "e", function()
 end)
 hs.hotkey.bind({ "alt" }, "s", function()
     toggleAppByBundleId("com.vandyke.SecureCRT")
-end)
-hs.hotkey.bind({ "alt" }, "l", function()
-    toggleAppByBundleId("com.rockysandstudio.Leaf")
 end)
 hs.hotkey.bind({ "alt" }, "y", function()
     toggleAppByBundleId("com.jetbrains.pycharm")
