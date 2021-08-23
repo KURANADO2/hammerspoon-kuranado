@@ -94,7 +94,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
     f.y = max.y + (max.h / 2)
     f.w = max.w
     f.h = max.h / 2
-    win:setFrame(f)
+    win:setFrame(f) 
 end)
 
 -- 左上角
@@ -531,7 +531,10 @@ mousePositions = {}
 function toggleAppByBundleId(appBundleID)
     -- 获取当前最靠前的应用,保存鼠标位置
     local frontMostApp = hs.application.frontmostApplication()
-    mousePositions[frontMostApp:mainWindow():id()] = hs.mouse.absolutePosition
+    -- 当前无最靠前的应用（没有任何应用获取到鼠标焦点，此种情况在发生在）
+    if frontMostApp ~= nil and frontMostApp:mainWindow() ~= nil then
+        mousePositions[frontMostApp:mainWindow():id()] = hs.mouse.absolutePosition
+    end
 
     -- 两者重复时,寻找下一个该窗口
     if frontMostApp:bundleID() == appBundleID then
