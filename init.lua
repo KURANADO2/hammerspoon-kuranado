@@ -531,7 +531,7 @@ mousePositions = {}
 function toggleAppByBundleId(appBundleID)
     -- 获取当前最靠前的应用,保存鼠标位置
     local frontMostApp = hs.application.frontmostApplication()
-    -- 当前无最靠前的应用（没有任何应用获取到鼠标焦点，此种情况在发生在）
+    -- 当前无最靠前的应用窗口或最靠前的应用的窗口
     if frontMostApp ~= nil and frontMostApp:mainWindow() ~= nil then
         mousePositions[frontMostApp:mainWindow():id()] = hs.mouse.absolutePosition
     end
