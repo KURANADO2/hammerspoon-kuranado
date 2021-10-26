@@ -92,6 +92,14 @@ osascript -e 'id of app "Name of App"'
 
 ![image](./images/bundleid.png)
 
+另外，如果你使用的是比较新的 Mac 系统，终端下输入 ls /Applications 可能是看不到系统自带应用的，如下图，ll 查看不到 Mac 自带的邮件应用，但 Finder 打开 /Applications 目录则可以看到邮件应用
+
+![image](./images/applications.png)
+
+此时我们可以在 Finder 中选中邮件应用，右键：显示包内容 -> Contents -> 打开 info.plist 文件，找到 CFBundleIdentifier 配置项，该配置项的值即为 bundle id，当然此方法也适应于自己安装的应用
+
+![image](./images/mail.png)
+
 ## 参考
 - [学长博客 - OSX--OSX应用快速切换方案](https://mrdear.cn/posts/osx_app_switcher.html)
 - [官方 Quick Start](https://www.hammerspoon.org/go/)
