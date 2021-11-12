@@ -10,10 +10,10 @@ then
     second_monitor = hs.screen.allScreens()[2]:id()
 end
 -- 设置第三个显示器（暂未使用）
-local thrid_monitor = nil
+local third = nil
 if (monitor_num >= 3)
 then
-    thrid_monitor = hs.screen.allScreens()[3]:id()
+    third = hs.screen.allScreens()[3]:id()
 end
 -- 设置第四个显示器（暂未使用）
 local fourth_monitor = nil
