@@ -67,10 +67,12 @@ function format_speed(bytes)
     else
         -- 单位 KB/s
         if bytes < 1048576 then
-            return string.format('%6.1f', bytes / 1024) .. ' KB/s'
+            -- 因为是每两秒刷新一次，所以要除以 （1024 * 2）
+            return string.format('%6.1f', bytes / 2048) .. ' KB/s'
             -- 单位 MB/s
         else
-            return string.format('%6.1f', bytes / 1024 / 1024) .. ' MB/s'
+            -- 除以 （1024 * 1024 * 2）
+            return string.format('%6.1f', bytes / 2097152) .. ' MB/s'
         end
     end
 end
