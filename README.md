@@ -9,21 +9,30 @@ mv hammerspoon-kuranado/.git .
 mv hammerspoon-kuranado/.gitignore .
 ```
 
-## Hammerspoon 作用
-- 替代 Magnet 进行窗口移动
-之前一直用 Magnet 移动窗口，使用 Hammerspoon 之后完全可以替代 Magnet，以下为 Magnet 横屏和竖屏分别支持的快捷键截图
+## 本工程提供功能
+### 窗口移动
 
-横屏：
+替代 Magnet 进行窗口移动
 
-![image](./images/horizontal.png)
+![](./images/window.png)
 
-竖屏：
+### 应用切换
 
-![image](./images/vertical.png)
+为应用配置快捷键，比 ⌘⇥ 和 Alfred 切换程序更高效（建议只为高频使用的一些软件分配快捷键）
 
-- 为应用配置快捷键，比 ⌘⇥ 和 Alfred 切换程序更高效（建议只为高频使用的一些软件分配快捷键）
+### 实时网速显示
 
-## 个人配置快捷键列表
+替代 NetWorker Pro 实时显示网速（每两秒刷新一次）
+
+![](./images/network.png)
+
+### 密码粘贴
+
+解决某些网站禁止粘贴密码问题
+
+## 快捷键列表
+
+请根据需要自行修改
 
 快捷键|功能
 -|-
@@ -65,13 +74,14 @@ mv hammerspoon-kuranado/.gitignore .
 ⌥G|打开 Gridea
 ⌥D|打开 DataGrip
 ⌥T|打开 iTerm2
-⌥M|打开 MailMaster
+⌥M|打开 Foxmail
 ⌥P|打开 Postman
 ⌥O|打开 Word
 ⌥E|打开 Excel
 ⌥S|打开 SecureCRT
 ⌥Y|打开 PyCharm
 ⌥R|打开 Another Redis Desktop Manager
+⌘⌥V|以模拟按键方式将剪贴板中的字符粘贴出来（解决某些网站禁止粘贴密码问题）
 
 **注意：**屏幕之间移动窗口，需要保证主屏在右侧，副屏在左侧，这里的左侧、右侧指的是显示器的逻辑位置，而不是物理位置，当然一般大家都会保证逻辑位置和物理位置一致，以方便操作。所谓的逻辑位置，可在：系统偏好设置 -> 显示器 -> 排列 下设置：
 
@@ -110,3 +120,5 @@ osascript -e 'id of app "Name of App"'
 - [hammerspoon-init](https://github.com/rtoshiro/hammerspoon-init)
 - [菜鸟教程 - Lua 教程](https://www.runoob.com/lua/lua-tutorial.html)
 - [Easily see any app’s bundle identifier](https://robservatory.com/easily-see-any-apps-bundle-identifier/)
+- [GitHub - wangshub/hammerspoon-config](https://github.com/wangshub/hammerspoon-config)
+- [GitHub - ashfinal/awesome-hammerspoon](https://github.com/ashfinal/awesome-hammerspoon)
