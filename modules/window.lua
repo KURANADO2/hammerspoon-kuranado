@@ -27,7 +27,7 @@ hs.window.animationDuration = 0
 
 -- 窗口移动
 -- 左半屏
-hs.hotkey.bind({"alt", "ctrl"}, "Left", function()
+hs.hotkey.bind({"alt", "ctrl"}, "Left", "Left Half", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -41,7 +41,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Left", function()
 end)
 
 -- 右半屏
-hs.hotkey.bind({"alt", "ctrl"}, "Right", function()
+hs.hotkey.bind({"alt", "ctrl"}, "Right", "Right Half", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -55,7 +55,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Right", function()
 end)
 
 -- 上半屏
-hs.hotkey.bind({"alt", "ctrl"}, "Up", function()
+hs.hotkey.bind({"alt", "ctrl"}, "Up", "Up Half", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -69,7 +69,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Up", function()
 end)
 
 -- 下半屏
-hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
+hs.hotkey.bind({"alt", "ctrl"}, "Down", "Down Half", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -83,7 +83,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "Down", function()
 end)
 
 -- 左上角
-hs.hotkey.bind({"alt", "ctrl"}, "U", function()
+hs.hotkey.bind({"alt", "ctrl"}, "U", "Top Left", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -97,7 +97,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "U", function()
 end)
 
 -- 右上角
-hs.hotkey.bind({"alt", "ctrl"}, "I", function()
+hs.hotkey.bind({"alt", "ctrl"}, "I", "Top Right", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -111,7 +111,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "I", function()
 end)
 
 -- 左下角
-hs.hotkey.bind({"alt", "ctrl"}, "J", function()
+hs.hotkey.bind({"alt", "ctrl"}, "J", "Left Bottom", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -125,7 +125,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "J", function()
 end)
 
 -- 右下角
-hs.hotkey.bind({"alt", "ctrl"}, "K", function()
+hs.hotkey.bind({"alt", "ctrl"}, "K", "Right Bottom", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -139,7 +139,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "K", function()
 end)
 
 -- 1/9
-hs.hotkey.bind({"alt", "ctrl"}, "1", function()
+hs.hotkey.bind({"alt", "ctrl"}, "1", "1/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -153,7 +153,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "1", function()
 end)
 
 -- 2/9
-hs.hotkey.bind({"alt", "ctrl"}, "2", function()
+hs.hotkey.bind({"alt", "ctrl"}, "2", "2/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -167,7 +167,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "2", function()
 end)
 
 -- 3/9
-hs.hotkey.bind({"alt", "ctrl"}, "3", function()
+hs.hotkey.bind({"alt", "ctrl"}, "3", "3/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -181,7 +181,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "3", function()
 end)
 
 -- 4/9
-hs.hotkey.bind({"alt", "ctrl"}, "4", function()
+hs.hotkey.bind({"alt", "ctrl"}, "4", "4/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -195,7 +195,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "4", function()
 end)
 
 -- 5/9
-hs.hotkey.bind({"alt", "ctrl"}, "5", function()
+hs.hotkey.bind({"alt", "ctrl"}, "5", "5/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -209,7 +209,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "5", function()
 end)
 
 -- 6/9
-hs.hotkey.bind({"alt", "ctrl"}, "6", function()
+hs.hotkey.bind({"alt", "ctrl"}, "6", "6/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -223,7 +223,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "6", function()
 end)
 
 -- 7/9
-hs.hotkey.bind({"alt", "ctrl"}, "7", function()
+hs.hotkey.bind({"alt", "ctrl"}, "7", "7/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -237,7 +237,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "7", function()
 end)
 
 -- 8/9
-hs.hotkey.bind({"alt", "ctrl"}, "8", function()
+hs.hotkey.bind({"alt", "ctrl"}, "8", "8/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -251,7 +251,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "8", function()
 end)
 
 -- 9/9
-hs.hotkey.bind({"alt", "ctrl"}, "9", function()
+hs.hotkey.bind({"alt", "ctrl"}, "9", "9/9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -265,7 +265,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "9", function()
 end)
 
 -- 左 1/3（横屏）或上 1/3（竖屏）
-hs.hotkey.bind({"alt", "ctrl"}, "D", function()
+hs.hotkey.bind({"alt", "ctrl"}, "D", "Left 1/3(Horizontal screen) Or Top 1/3(Vertical screen)", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -287,7 +287,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "D", function()
 end)
 
 -- 中 1/3
-hs.hotkey.bind({"alt", "ctrl"}, "F", function()
+hs.hotkey.bind({"alt", "ctrl"}, "F", "Middle 1/3", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -309,7 +309,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "F", function()
 end)
 
 -- 右 1/3（横屏）或下 1/3（竖屏）
-hs.hotkey.bind({"alt", "ctrl"}, "G", function()
+hs.hotkey.bind({"alt", "ctrl"}, "G", "Right 1/3(Horizontal screen)Or Bottom 1/3(Vertical screen)", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -331,7 +331,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "G", function()
 end)
 
 -- 左 2/3（横屏）或上 2/3（竖屏）
-hs.hotkey.bind({"alt", "ctrl"}, "E", function()
+hs.hotkey.bind({"alt", "ctrl"}, "E", "Left 2/3(Horizontal screen) Or Top 2/3(Vertical screen)", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -353,7 +353,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "E", function()
 end)
 
 -- 右 2/3（横屏）或下 2/3（竖屏）
-hs.hotkey.bind({"alt", "ctrl"}, "T", function()
+hs.hotkey.bind({"alt", "ctrl"}, "T", "Right 2/3(Horizontal screen)Or Bottom 2/3(Vertical screen)", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -384,7 +384,7 @@ function isVerticalScreen(screen)
 end
 
 -- 居中
-hs.hotkey.bind({"alt", "ctrl"}, "C", function()
+hs.hotkey.bind({"alt", "ctrl"}, "C", "Center", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -398,7 +398,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "C", function()
 end)
 
 -- 等比例放大窗口
-hs.hotkey.bind({"alt", "ctrl"}, "=", function()
+hs.hotkey.bind({"alt", "ctrl"}, "=", "Zoom Window", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -424,7 +424,7 @@ hs.hotkey.bind({"alt", "ctrl"}, "=", function()
 end)
 
 -- 等比例缩小窗口
-hs.hotkey.bind({"alt", "ctrl"}, "-", function()
+hs.hotkey.bind({"alt", "ctrl"}, "-", "Narrow Window", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     f.w = f.w - 40
@@ -435,14 +435,14 @@ hs.hotkey.bind({"alt", "ctrl"}, "-", function()
 end)
 
 -- 最大化
-hs.hotkey.bind({"alt", "ctrl"}, "Return", function()
+hs.hotkey.bind({"alt", "ctrl"}, "Return", "Max Window", function()
     local win = hs.window.focusedWindow()
     win:maximize()
 end)
 
 -- 主屏副屏之间的窗口移动（适用于主屏物理位置在右，副屏物理位置在左的显示器摆放布局，若不是该布局，则在系统偏好设置 -> 显示器 -> 排列下，将白色的条块拖动到右边的显示器顶部）
 -- 主屏窗口移动到副屏
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", "Move To Left Screen", function()
     local win = hs.window.focusedWindow()
     if (win) then
         win:moveToScreen(second_monitor)
@@ -450,7 +450,7 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
 end)
 
 -- 副屏窗口移动到主屏
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", "Move To Right Screen", function()
     local win = hs.window.focusedWindow()
     if (win) then
         win:moveToScreen(main_monitor)
