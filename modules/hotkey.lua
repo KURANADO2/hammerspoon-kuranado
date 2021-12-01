@@ -27,9 +27,50 @@ function formatText()
     -- 加载所有绑定的快捷键
     local hotkeys = hs.hotkey.getHotkeys()
     local renderText = {}
+    -- 快捷键分类
+    -- 应用切换类
+    local applicationSwitchText = {}
+    table.insert(applicationSwitchText, {msg = '[Application Switch:]'})
+    -- 窗口管理类
+    local windowManagement = {}
+    table.insert(windowManagement, {msg = '[Window Management:]'})
+    -- 密码粘贴类
+    local passwordPaste = {}
+    table.insert(passwordPaste, {msg = '[Password Paste:]'})
 
     -- 每行最多 40 个字符
     local MAX_LEN = 40
+
+    -- 快捷键分类
+    for k, v in ipairs(hotkeys) do
+        -- 以 ⌥ 开头，表示为应用切换快捷键
+        if string.find(v.idx, '^⌥') ~= nil then
+            table.insert(applicationSwitchText, {msg = v.msg})
+        end
+        -- 以 ⌃⌥ 或 ⌘⌃⌥ 开头，表示为窗口管理快捷键
+        if string.find(v.idx, '^⌃⌥') ~= nil or string.find(v.idx, '^⌘⌃⌥') ~= nil then
+            table.insert(windowManagement, {msg = v.msg})
+        end
+        -- 以 ⌘⌃ 开头，表示为密码粘贴快捷键
+        if v.idx == '⌘⌃V' then
+            table.insert(passwordPaste, {msg = v.msg})
+        end
+    end
+
+    hotkeys = {}
+    for k, v in ipairs(applicationSwitchText) do
+        table.insert(hotkeys, {msg = v.msg})
+    end
+    for k, v in ipairs(windowManagement) do
+        table.insert(hotkeys, {msg = v.msg})
+    end
+    for k, v in ipairs(passwordPaste) do
+        table.insert(hotkeys, {msg = v.msg})
+    end
+
+    for k, v in ipairs(hotkeys) do
+        print('msg', v.msg)
+    end
 
     -- 文本定长
     for k, v in ipairs(hotkeys) do
@@ -63,8 +104,12 @@ function drawText(renderText)
     local column = ''
     for k, v in ipairs(renderText) do
         local line = v.line
-        column = column .. line .. '  \n'
-        -- k mod MAX_LINE_NUM
+        if math.fmod(k, MAX_LINE_NUM) == 0 then
+            column = column .. line .. '  '
+        else
+            column = column .. line .. '  \n'
+        end
+        -- k mod MAX_LINE_NUM 
         if math.fmod(k, MAX_LINE_NUM) == 0 then
             local itemText = styleText(column)
             local size = canvas:minimumTextSize(itemText)
@@ -78,9 +123,9 @@ function drawText(renderText)
                 text = itemText,
                 frame = {x = (k / MAX_LINE_NUM - 1) * size.w + SEPRATOR_W, y = 0, w = size.w + SEPRATOR_W, h = size.h}
             })
-            canvas:appendElements({ 
-                type = "segments", 
-                closed = false, 
+            canvas:appendElements({
+                type = "segments",
+                closed = false,
                 -- strokeColor = { blue = 1 }, 
                 strokeColor = { hex = '#0096FA' },
                 action = "stroke",
