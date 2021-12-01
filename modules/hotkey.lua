@@ -68,10 +68,6 @@ function formatText()
         table.insert(hotkeys, {msg = v.msg})
     end
 
-    for k, v in ipairs(hotkeys) do
-        print('msg', v.msg)
-    end
-
     -- 文本定长
     for k, v in ipairs(hotkeys) do
         num = num + 1
