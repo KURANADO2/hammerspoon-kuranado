@@ -36,6 +36,12 @@ mv hammerspoon-kuranado/.gitignore .
 
 ![](./images/shortcut.png)
 
+### 下班提醒
+
+每天 18:00 提醒下班（根据实际下班时间自行修改脚本），鼠标点击可关闭动画
+
+![](./images/after-work.png)
+
 ## 快捷键列表
 
 请根据需要自行修改
