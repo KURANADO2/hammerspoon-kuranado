@@ -27,7 +27,7 @@ function afterWork()
     canvas:appendElements({
         id = 'after-work',
         type = 'image',
-        image = hs.image.imageFromPath('~/.hammerspoon/images/after-work.gif'),
+        image = hs.image.imageFromPath(os.getenv("HOME") .. '/.hammerspoon/images/after-work.gif'),
         imageScaling = 'scaleToFit',
         imageAnimates = true
     })
@@ -42,7 +42,7 @@ function afterWork()
 end
 
 -- 调用下班动画
-afterWork()
+-- afterWork()
 -- 每天 18:00 提醒下班
 hs.timer.doAt('18:00', 86400, afterWork):start()
 -- 1 分钟后清除 Canvas
