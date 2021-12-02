@@ -1,2 +1,2 @@
-require 'modules.switch'
+require 'modules.menu'
 require 'modules.reload'

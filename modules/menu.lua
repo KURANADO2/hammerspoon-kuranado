@@ -1,4 +1,4 @@
--- 功能开关
+-- 功能菜单
 
 require 'modules.base'
 
