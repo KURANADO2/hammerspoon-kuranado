@@ -1,12 +1,20 @@
 [TOC]
 
-## 使用
+## 如何安装
+
+请先下载安装 [Hammerspoon](https://github.com/Hammerspoon/hammerspoon/releases)，然后再执行如下命令
+
 ```
 cd ~/.hammerspoon
-git clone https://github.com/KURANADO2/hammerspoon-kuranado.git
-mv hammerspoon-kuranado/* .
-mv hammerspoon-kuranado/.git .
-mv hammerspoon-kuranado/.gitignore .
+rm -rf *
+git init
+git remote add origin git@github.com:KURANADO2/hammerspoon-kuranado.git
+git pull origin main
+```
+
+## 如何更新
+```
+git pull origin main
 ```
 
 ## 本工程提供功能
