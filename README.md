@@ -1,8 +1,13 @@
+![](https://img.shields.io/badge/Hammerspoon-0.9.91-FFB100)
+![](https://img.shields.io/badge/Lua-5.3-00007C)
+
 [TOC]
+
+**注：**若 README 图片无法显示，请确保挂了梯子，并且 PAC 文件中配置 `||githubusercontent.com`，或者直接使用全局模式
 
 ## 如何安装
 
-请先下载安装 [Hammerspoon](https://github.com/Hammerspoon/hammerspoon/releases)，然后再执行如下命令
+本工程所有脚本都基于 Hammerspoon 运行，请先下载安装 [Hammerspoon](https://github.com/Hammerspoon/hammerspoon/releases)，然后再执行如下命令
 
 ```
 cd ~/.hammerspoon
@@ -12,10 +17,26 @@ git remote add origin git@github.com:KURANADO2/hammerspoon-kuranado.git
 git pull origin main
 ```
 
-## 如何更新
+## 手动更新
+
+手动安装更新：
+
 ```
+cd ~/.hammerspoon
 git pull origin main
 ```
+
+如果发现冲突，请解决冲突后再执行 `git pull origin main`
+
+## 自动更新
+
+除手动更新外，本工程还支持自动检查更新并安装，可在功能菜单中关闭自动更新（不建议）
+
+自动更新原理如下：
+- .config 文件（用户配置文件）加入到 .gitignore 文件中
+- 定期执行 `git pull origin main`
+- 如果发现冲突，则 console 打印自动更新失败相关提示信息，此时请手动安装更新，参考：[手动更新](https://github.com/KURANADO2/hammerspoon-kuranado#%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0)
+- 如果发现默认配置版本号 > 用户本地 .config 文件的配置版本号，则在保留用户原有配置的基础上，将新增配置合并到用户本地 .config 文件中，并更新配置版本号
 
 ## 本工程提供功能
 ### 窗口移动
@@ -54,7 +75,7 @@ git pull origin main
 
 ### 功能菜单
 
-鼠标单击功能项，即可根据自己需要启用/禁用功能项
+鼠标单击功能项，即可启用/禁用功能项
 
 ![](./images/menu-doc.png)
 
@@ -102,7 +123,7 @@ git pull origin main
 ⌥G|打开 Gridea
 ⌥D|打开 DataGrip
 ⌥T|打开 iTerm2
-⌥M|打开 Foxmail
+⌥M|打开 MailMaster
 ⌥P|打开 Postman
 ⌥O|打开 Word
 ⌥E|打开 Excel
