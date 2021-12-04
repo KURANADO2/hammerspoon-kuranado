@@ -1,0 +1,1 @@
+hs.alert.show('AAAA')

@@ -2,7 +2,7 @@
 defaultConfig = {{
     -- 配置版本号
     -- 每次新增功能项，需将版本号加 1
-    configVersion = '1'
+    configVersion = '3'
 }, {
     module = 'modules.window',
     name = '窗口管理',
@@ -19,6 +19,10 @@ defaultConfig = {{
     module = 'modules.network',
     name = '实时网速',
     enable = true
+}, {
+    module = 'modules.keystroke-visualizer',
+    name = '按键显示',
+    enable = false
 }, {
     module = 'modules.hotkey',
     name = '快捷键列表查看',
