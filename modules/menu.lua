@@ -3,6 +3,8 @@
 require 'modules.base'
 require 'modules.config'
 
+local menubar = hs.menubar.new()
+
 function renderMenubar(config)
 
     -- 用于存储所有菜单项
@@ -52,7 +54,6 @@ function renderMenubar(config)
             hs.reload()
         end
     })
-    local menubar = hs.menubar.new()
     local icon = hs.image.imageFromPath(base_path .. 'images/menu.png')
     -- 调整图标大小
     local iconCopied = icon:setSize({w = 25, h = 25}, true)
