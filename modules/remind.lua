@@ -44,20 +44,7 @@ end
 -- 调用下班动画
 -- afterWork()
 
-local obj = {}
-
--- 解决定时器总是会挂掉问题
-if obj.start then
-    obj.start:stop()
-    obj.start = nil
-end
-
-if obj.stop then
-    obj.stop:stop()
-    obj.stop = nil
-end
-
 -- 每天 18:00 提醒下班
-obj.start = hs.timer.doAt('19:50', 86400, afterWork):start()
+kstart = hs.timer.doAt('18:00', hs.timer.days(1), afterWork):start()
 -- 1 分钟后清除 Canvas
-obj.stop = hs.timer.doAt('19:52', 86400, cleanCanvas):start()
+kend = hs.timer.doAt('18:01', hs.timer.days(1), cleanCanvas):start()

@@ -63,11 +63,5 @@ end
 
 checkUpdateForReload()
 
-local obj = {}
-if obj.timer then
-    obj.timer:stop()
-    obj.timer = nil
-end
-
 -- 每天 12 点检查一遍更新
-obj.timer = hs.timer.doAt('10:00', 86400, checkUpdate):start()
+start = hs.timer.doAt('12:00', hs.timer.days(1), checkUpdate):start()
