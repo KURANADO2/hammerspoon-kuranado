@@ -151,7 +151,7 @@ function styleText(text)
     return hs.styledtext.new(text, {
         font = {
             name = "Monaco",
-            size = 14
+            size = 16
         },
         color = {hex = '#0096FA'},
         paragraphStyle = {
