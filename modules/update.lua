@@ -7,9 +7,9 @@ function checkUpdate()
     local result = hs.execute('git pull origin main')
     print('Pull Result:', result)
     -- 已是最新
-    if string.find(result, '.*Already up to date..*') ~= nil then
-        return
-    end
+    -- if string.find(result, '.*Already up to date..*') ~= nil then
+    --     return
+    -- end
     -- 假设没有冲突
     -- 用户配置文件
     local customConfig = unserialize(loadConfig())
