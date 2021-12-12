@@ -2,7 +2,7 @@
 defaultConfig = {{
     -- 配置版本号
     -- 每次新增功能项，需将版本号加 1
-    configVersion = '3'
+    configVersion = '4'
 }, {
     module = 'modules.window',
     name = '窗口管理',
@@ -21,7 +21,7 @@ defaultConfig = {{
     enable = true
 }, {
     module = 'modules.keystroke-visualizer',
-    name = '按键显示',
+    name = '按键回显',
     enable = false
 }, {
     module = 'modules.hotkey',
