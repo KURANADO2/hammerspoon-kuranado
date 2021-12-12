@@ -15,45 +15,70 @@ local duration = 1.5 * 1000
 local fade_out = 0.3
 
 local keycodes = {
-    kctrl = '⌃',
-    krightctrl = '⌃',
-    kalt = '⌥',
-    krightalt = '⌥',
-    kcmd = '⌘',
-    krightcmd = '⌘',
-    kshift = '⇧',
-    krightshift = '⇧',
-    ktab = '⇥',
-    kcapslock = '⇪',
-    kup = '↑',
-    kdown = '↓',
-    kleft = '←',
-    kright = '→',
-    kescape = '⎋',
-    kforwarddelete = '⌦',
-    kdelete = '⌫',
-    khome = '↖︎',
-    kend = '↘︎',
-    kpageup = '⇞',
-    kpagedown = '⇟',
-    kspace = '␣',
-    kreturn = '↩︎'
+    kctrl = {char = '⌃', duplicate_removal = true, first = true},
+    krightctrl = {char = '⌃', duplicate_removal = true, first = true},
+    kalt = {char = '⌥', duplicate_removal = true, first = true},
+    krightalt = {char = '⌥', duplicate_removal = true, first = true},
+    kcmd = {char = '⌘', duplicate_removal = true, first = true},
+    krightcmd = {char = '⌘', duplicate_removal = true, first = true},
+    kshift = {char = '⇧', duplicate_removal = true, first = true},
+    krightshift = {char = '⇧', duplicate_removal = true, first = true},
+    ktab = {char = '⇥', duplicate_removal = false, first = true},
+    kcapslock = {char = '⇪', duplicate_removal = true, first = true},
+    kup = {char = '↑', duplicate_removal = false},
+    kdown = {char = '↓', duplicate_removal = false},
+    kleft = {char = '←', duplicate_removal = false},
+    kright = {char = '→', duplicate_removal = false},
+    kescape = {char = '⎋', duplicate_removal = false},
+    kforwarddelete = {char = '⌦', duplicate_removal = false},
+    kdelete = {char = '⌫', duplicate_removal = false},
+    khome = {char = '↖︎', duplicate_removal = false},
+    kend = {char = '↘︎', duplicate_removal = false},
+    kpageup = {char = '⇞', duplicate_removal = false},
+    kpagedown = {char = '⇟', duplicate_removal = false},
+    kspace = {char = '␣', duplicate_removal = false},
+    kreturn = {char = '↩︎', duplicate_removal = false},
 }
+
+local first_ctrl = true
+local first_cmd = true
+local first_alt = true
+local first_shift = true
+local first_rightctrl = true
+local first_rightcmd = true
+local first_rightalt = true
+local first_rightshift = true
+local first_capslock = true
 
 key = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, function(event)
     local type = event:getType()
-    local key = hs.keycodes.map[event:getKeyCode()]
+    local keycode = event:getKeyCode()
+    -- print('keycode:', keycode)
+    if keycode == 255 then
+        goto continue
+    end
+    local key = hs.keycodes.map[keycode]
+    -- 
     local tmp = keycodes['k' .. key]
     if tmp ~= nil then
-        key = tmp
+        if tmp.duplicate_removal then
+             if tmp.first then
+                 tmp.first = false
+             else
+                tmp.first = true
+                goto continue
+             end
+        end
+        key = tmp.char
     end
     -- 渲染
     render(key)
+    ::continue::
 end):start()
 
 local list = {}
 -- 当前画布属性
-local obj = {
+local ele = {
     -- 展示的文本
     text = '',
     -- 画布行数
@@ -72,7 +97,7 @@ local obj = {
         h = 0
     })
 }
-table.insert(list, obj)
+table.insert(list, ele)
 
 function render(key)
 
@@ -131,12 +156,14 @@ function render(key)
     list[1].last_time = now_time
 end
 
-function hideCanvas()
-    local now_time = now()
-    if now_time - list[1].last_time > duration then
-        list[1].canvas:hide(fade_out)
-    end
-end
+-- function hideCanvas()
+--     local now_time = now()
+--     print('now_:', now_time)
+--     print('last:', list[1].last_time)
+--     if now_time - list[1].last_time > duration then
+--         list[1].canvas:hide(fade_out)
+--     end
+-- end
 
 function now()
     -- 精确到毫秒（Lua os.time() 只能精确到秒）
@@ -165,4 +192,10 @@ function styleKeystrokeText(text)
     })
 end
 
-kstart = hs.timer.doEvery(1, hideCanvas):start()
+-- local obj = {}
+-- if obj.timer then
+--     obj.timer:stop()
+--     obj.timer = nil
+-- end
+-- obj.timer = hs.timer.doEvery(1, hideCanvas, true):start()
+-- = hs.timer.new(1, hideCanvas, true):start()
