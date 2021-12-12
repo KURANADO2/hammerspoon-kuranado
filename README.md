@@ -41,7 +41,7 @@ git pull origin main
 ## 本工程提供功能
 ### 窗口移动
 
-替代 Magnet 进行窗口移动
+替代 [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12) 进行窗口移动
 
 ![](./images/window.png)
 
@@ -51,7 +51,7 @@ git pull origin main
 
 ### 实时网速显示
 
-替代 NetWorker Pro 实时显示网速（每两秒刷新一次）
+替代 [NetWorker Pro](https://apps.apple.com/us/app/networker-pro/id1163602886?mt=12) 实时显示网速（每两秒刷新一次）
 
 ![](./images/network.png)
 
@@ -60,6 +60,19 @@ git pull origin main
 解决某些网站禁止粘贴密码、SSH 登陆需要手动输入密码等问题。
 首先使用 ⌘C 复制密码，然后在密码输入框内，按 ⌃⌘V 即可将密码粘贴到输入框内。
 原理为读取剪贴板最新一条记录，针对读取到的每一个字符，模拟按键事件。
+
+### 按键回显
+
+替代 [KeyCastr](https://github.com/keycastr/keycastr)
+
+![](./images/keystroke-visualizer.gif)
+
+注：目前暂且实现了简单的按键回显，和 KeyCastr 相比在功能上仍相差甚远，如：
+- 不支持多画布
+- 长时间未接收到按键事件，不支持自动淡出画布（增加计时器可以做到，实际这部分代码也已经实现，但 Hammerspoon 提供的计时器总会无故挂掉，所以暂时删除了该功能）
+- 画布不支持拖拽
+- ...
+感兴趣的同学欢迎提出实现思路，或直接贡献代码（不太懂 Objective-C，KeyCastr 的实现源码个人看不太懂）
 
 ### 快捷键列表查看
 
@@ -181,3 +194,4 @@ osascript -e 'id of app "Name of App"'
 - [Easily see any app’s bundle identifier](https://robservatory.com/easily-see-any-apps-bundle-identifier/)
 - [GitHub - wangshub/hammerspoon-config](https://github.com/wangshub/hammerspoon-config)
 - [GitHub - ashfinal/awesome-hammerspoon](https://github.com/ashfinal/awesome-hammerspoon)
+- [Is it possible to show what a keycode being pressed is?](https://github.com/Hammerspoon/hammerspoon/issues/2937)
