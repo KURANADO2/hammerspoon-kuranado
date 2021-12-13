@@ -156,14 +156,11 @@ function render(key)
     list[1].last_time = now_time
 end
 
--- function hideCanvas()
---     local now_time = now()
---     print('now_:', now_time)
---     print('last:', list[1].last_time)
---     if now_time - list[1].last_time > duration then
---         list[1].canvas:hide(fade_out)
---     end
--- end
+function hideCanvas()
+    if now() - list[1].last_time > duration then
+        list[1].canvas:hide(fade_out)
+    end
+end
 
 function now()
     -- 精确到毫秒（Lua os.time() 只能精确到秒）
@@ -183,7 +180,7 @@ function styleKeystrokeText(text)
         },
         backgroundColor = {
             hex = '#000000',
-            alpha = 1.0
+            alpha = .5
         },
         paragraphStyle = {
             -- 超过画布宽度后自动换行
@@ -192,10 +189,4 @@ function styleKeystrokeText(text)
     })
 end
 
--- local obj = {}
--- if obj.timer then
---     obj.timer:stop()
---     obj.timer = nil
--- end
--- obj.timer = hs.timer.doEvery(1, hideCanvas, true):start()
--- = hs.timer.new(1, hideCanvas, true):start()
+ktimer = hs.timer.doEvery(5, hideCanvas, true):start()
