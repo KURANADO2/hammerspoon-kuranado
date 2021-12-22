@@ -150,7 +150,7 @@ function preview(path)
     canvas[1] = {
         type = 'image',
         image = hs.image.imageFromPath(path),
-        imageScaling = 'scaleToFit',
+        imageScaling = 'scalePropertionally',
         imageAnimates = true
     }
     canvas:show()
