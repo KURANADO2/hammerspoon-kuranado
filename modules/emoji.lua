@@ -39,7 +39,6 @@ chooser:fgColor({
 })
 chooser:placeholderText('搜索表情包')
 
--- function request(choices, query)
 function request(query)
 
     choices = {}
@@ -60,13 +59,15 @@ function request(query)
             for k, v in ipairs(rawjson.data) do
                 local file_path = cache_dir .. hs.http.urlParts(v.url).lastPathComponent
                 print('file_path:', file_path)
+                -- 下载图片
+                download_file(v.url, file_path)
                 table.insert(choices, {
                     text = v.title,
                     subText = v.url,
-                    path = file_path
+                    path = file_path,
+                    image = hs.image.imageFromPath(file_path)
                 })
-                -- 下载图片
-                download_file(v.url, file_path)
+                chooser:choices(choices)
             end
         end
     end)
@@ -108,10 +109,10 @@ function file_exists(file_path)
  function parse_query(query)
     local k = ''
     local p = nil
+    query = trim(query)
     if query == nil or query == '' then
         return nil, nil
     end
-    query = trim(query)
     -- 按照空格切割
     arr = split(query, ' ')
     print('len:', #arr)
