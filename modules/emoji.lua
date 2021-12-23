@@ -17,6 +17,7 @@ request_headers = {Referer = 'http://kuranado.com'}
 cache_dir = os.getenv("HOME") .. '/.hammerspoon/.emoji/'
 
 choices = {}
+page = 1
 
 chooser = hs.chooser.new(function(choice)
     if not choice then
@@ -43,22 +44,19 @@ function request(query)
 
     choices = {}
 
-    keyword, page = parse_query(query)
-
-    if keyword == nil or page == nil then
+    if query == nil or trim(query) == '' then
         return
     end
 
-    local url = api .. hs.http.encodeForQuery(keyword) .. '&page=' .. page .. '&size=9'
+    local url = api .. hs.http.encodeForQuery(query) .. '&page=' .. page .. '&size=9'
+    print('url:', url)
 
     hs.http.doAsyncRequest(url, 'GET', nil, request_headers, function(code, body, response_headers)
-        print('body:', body)
         rawjson = hs.json.decode(body)
         if code == 200 and rawjson.code == 1000 then
             len = #rawjson.data
             for k, v in ipairs(rawjson.data) do
                 local file_path = cache_dir .. hs.http.urlParts(v.url).lastPathComponent
-                print('file_path:', file_path)
                 -- 下载图片
                 download_file(v.url, file_path)
                 table.insert(choices, {
@@ -67,8 +65,8 @@ function request(query)
                     path = file_path,
                     image = hs.image.imageFromPath(file_path)
                 })
-                chooser:choices(choices)
             end
+            chooser:choices(choices)
         end
     end)
 end
@@ -106,46 +104,6 @@ function file_exists(file_path)
     end
  end
 
- function parse_query(query)
-    local k = ''
-    local p = nil
-    query = trim(query)
-    if query == nil or query == '' then
-        return nil, nil
-    end
-    -- 按照空格切割
-    arr = split(query, ' ')
-    print('len:', #arr)
-
-    if #arr == 1 then
-        return arr[1], 1
-    end
-
-    -- 最后一项是否为数字
-    if string.find(arr[#arr], '[0-9]+', 1) ~= nil then
-        p = tonumber(arr[#arr])
-    else 
-        p = 1
-    end
-    for i = 1, #arr - 1 do
-        k = k .. arr[i]
-    end
-    if trim(k) == '' then
-        return nil, nil
-    end
-    return k, p
-end
-
--- TODO-JING 增加延时
-chooser:queryChangedCallback(function()
-    local query = chooser:query()
-    request(query)
-end)
-
-chooser:hideCallback(function()
-    canvas:hide(.3)
-end)
-
 function preview(path)
     canvas[1] = {
         type = 'image',
@@ -164,6 +122,21 @@ key = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
     end
     local keycode = event:getKeyCode()
     local key = hs.keycodes.map[keycode]
+    if 'right' == key then
+        page = page + 1
+        request(chooser:query())
+        return
+    end
+    if 'left' == key then
+        if page <= 1 then
+            page = 1
+            return
+        end
+        page = page - 1
+        request(chooser:query())
+        return
+    end
+    
     if 'down' ~= key and 'up' ~= key then
         return
     end
@@ -188,11 +161,22 @@ key = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
 end):start()
 
 hs.hotkey.bind({"alt"}, "K", function()
+    page = 1
     chooser:query('')
     chooser:show()
 end)
 
+-- TODO-JING 增加延时
+chooser:queryChangedCallback(function()
+    local query = chooser:query()
+    print('query:', query)
+    page = 1
+    request(query)
+end)
+
+chooser:hideCallback(function()
+    canvas:hide(.3)
+end)
+
 -- TODO-JING 解决中文输入法界面被遮挡问题
--- TODO-JING 解决图片固定尺寸被拉伸问题
 -- TODO-JING 解决每次搜索卡顿问题
--- TODO-JING 敲击空格后不发送请求
