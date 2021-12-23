@@ -4,6 +4,7 @@
 [TOC]
 
 **注：**若 README 图片无法显示，请确保挂了梯子，并且 PAC 文件中配置 `||githubusercontent.com`，或者直接使用全局模式
+**注：**如果你觉得本工程提供的功能对你有用，我将对此非常开心，如果能帮忙点一个 Star，鄙人不胜感激！
 
 ## 如何安装
 
@@ -49,6 +50,14 @@ git pull origin main
 
 为应用配置快捷键，比 ⌘⇥ 和 Alfred 切换程序更高效（建议只为高频使用的一些软件分配快捷键）
 
+### 表情包搜索
+
+快捷键 ⌥K 唤醒表情包搜索功能，输入关键词，**上下**键用于选择、预览表情包；**左右**键用于翻页；**回车键**用于发送表情包
+
+![](./images/emoji.gif)
+
+**注：**该功能我曾在 Alfred Workflow 中实现过一遍：[https://github.com/KURANADO2/emoji-alfredworkflow](https://github.com/KURANADO2/emoji-alfredworkflow)。但已很久没有维护，如果你对 Alfred 感兴趣，也可以看下
+
 ### 实时网速显示
 
 替代 [NetWorker Pro](https://apps.apple.com/us/app/networker-pro/id1163602886?mt=12) 实时显示网速（每两秒刷新一次）
@@ -69,8 +78,8 @@ git pull origin main
 
 注：目前暂且实现了简单的按键回显，和 KeyCastr 相比在功能上仍相差甚远，如：
 - 不支持多画布
-- 长时间未接收到按键事件，不支持自动淡出画布（增加计时器可以做到，实际这部分代码也已经实现，但 Hammerspoon 提供的计时器总会无故挂掉，所以暂时删除了该功能）
 - 画布不支持拖拽
+- 若 Hammerspoon 版本 >= 0.9.92，则每次重载配置后，几分钟后该功能便无法回显按键（Hammerspoon 官方 Bug，正在等待官方解决）
 - ...
 感兴趣的同学欢迎提出实现思路，或直接贡献代码（不太懂 Objective-C，KeyCastr 的实现源码个人看不太懂）
 
@@ -143,6 +152,7 @@ git pull origin main
 ⌥S|打开 SecureCRT
 ⌥Y|打开 PyCharm
 ⌥R|打开 Another Redis Desktop Manager
+⌥K|表情包搜索
 ⌃⌘V|以模拟按键方式将剪贴板中的字符粘贴出来（解决某些网站禁止粘贴密码问题）
 ⌥/|显示/隐藏快捷键列表
 
