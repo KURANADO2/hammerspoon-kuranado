@@ -40,20 +40,9 @@ local keycodes = {
     kreturn = {char = '↩︎', duplicate_removal = false},
 }
 
-local first_ctrl = true
-local first_cmd = true
-local first_alt = true
-local first_shift = true
-local first_rightctrl = true
-local first_rightcmd = true
-local first_rightalt = true
-local first_rightshift = true
-local first_capslock = true
-
 key = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, function(event)
     local type = event:getType()
     local keycode = event:getKeyCode()
-    -- print('keycode:', keycode)
     if keycode == 255 then
         goto continue
     end
@@ -122,7 +111,6 @@ function render(key)
     end
 
     local itemText = styleKeystrokeText(list[1].text)
-
     -- 文本大小
     local size = list[1].canvas:minimumTextSize(itemText)
     list[1].line_number = math.ceil(size.w / WIDTH)
