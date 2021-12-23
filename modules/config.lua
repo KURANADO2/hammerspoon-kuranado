@@ -2,7 +2,7 @@
 defaultConfig = {{
     -- 配置版本号
     -- 每次新增功能项，需将版本号加 1
-    configVersion = '4'
+    configVersion = '5'
 }, {
     module = 'modules.window',
     name = '窗口管理',
@@ -10,6 +10,10 @@ defaultConfig = {{
 }, {
     module = 'modules.application',
     name = '应用切换',
+    enable = true
+}, {
+    module = 'modules.emoji',
+    name = '表情包搜索',
     enable = true
 }, {
     module = 'modules.password',

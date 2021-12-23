@@ -10,7 +10,7 @@ local HEIGHT = 300
 local CHOOSER_WIDTH = screen.w * .2
 local COORIDNATE_X = screen.w / 2 + CHOOSER_WIDTH / 2 + 5
 local COORIDNATE_Y = screen.h / 2 - 300
-canvas = hs.canvas.new({x = COORIDNATE_X, y = COORIDNATE_Y - HEIGHT / 2, w = WIDTH, h = HEIGHT})
+emoji_canvas = hs.canvas.new({x = COORIDNATE_X, y = COORIDNATE_Y - HEIGHT / 2, w = WIDTH, h = HEIGHT})
 
 api = "http://api.kuranado.com/emoji/search?keyword="
 request_headers = {Referer = 'http://kuranado.com'}
@@ -104,13 +104,16 @@ function file_exists(file_path)
  end
 
 function preview(path)
-    canvas[1] = {
+    if path == nil then
+        return
+    end
+    emoji_canvas[1] = {
         type = 'image',
         image = hs.image.imageFromPath(path),
         imageScaling = 'scaleProportionally',
         imageAnimates = true
     }
-    canvas:show()
+    emoji_canvas:show()
 end
 
 -- 上下键选择表情包预览
@@ -173,7 +176,7 @@ chooser:queryChangedCallback(function()
 end)
 
 chooser:hideCallback(function()
-    canvas:hide(.3)
+    emoji_canvas:hide(.3)
 end)
 
 -- TODO-JING 解决中文输入法界面被遮挡问题
