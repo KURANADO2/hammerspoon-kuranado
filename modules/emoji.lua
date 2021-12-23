@@ -49,7 +49,6 @@ function request(query)
     end
 
     local url = api .. hs.http.encodeForQuery(query) .. '&page=' .. page .. '&size=9'
-    print('url:', url)
 
     hs.http.doAsyncRequest(url, 'GET', nil, request_headers, function(code, body, response_headers)
         rawjson = hs.json.decode(body)
@@ -108,7 +107,7 @@ function preview(path)
     canvas[1] = {
         type = 'image',
         image = hs.image.imageFromPath(path),
-        imageScaling = 'scalePropertionally',
+        imageScaling = 'scaleProportionally',
         imageAnimates = true
     }
     canvas:show()
@@ -169,7 +168,6 @@ end)
 -- TODO-JING 增加延时
 chooser:queryChangedCallback(function()
     local query = chooser:query()
-    print('query:', query)
     page = 1
     request(query)
 end)
