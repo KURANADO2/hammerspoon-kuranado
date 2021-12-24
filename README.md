@@ -4,7 +4,9 @@
 [TOC]
 
 **注：**若 README 图片无法显示，请确保挂了梯子，并且 PAC 文件中配置 `||githubusercontent.com`，或者直接使用全局模式
-**注：**如果你觉得本工程提供的功能对你有用，我将对此非常开心，如果能帮忙点一个 Star，鄙人不胜感激！
+**注：**如果你觉得本工程提供的功能对你有用，请帮忙点一个 Star，不胜感激，谢谢！
+
+---
 
 ## 如何安装
 
@@ -18,6 +20,8 @@ git remote add origin git@github.com:KURANADO2/hammerspoon-kuranado.git
 git pull origin main
 ```
 
+---
+
 ## 手动更新
 
 手动安装更新：
@@ -29,6 +33,8 @@ git pull origin main
 
 如果发现冲突，请解决冲突后再执行 `git pull origin main`
 
+---
+
 ## 自动更新
 
 除手动更新外，本工程还支持自动检查更新并安装，可在功能菜单中关闭自动更新（不建议）
@@ -38,6 +44,8 @@ git pull origin main
 - 定期执行 `git pull origin main`
 - 如果发现冲突，则 console 打印自动更新失败相关提示信息，此时请手动安装更新，参考：[手动更新](https://github.com/KURANADO2/hammerspoon-kuranado#%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0)
 - 如果发现默认配置版本号 > 用户本地 .config 文件的配置版本号，则在保留用户原有配置的基础上，将新增配置合并到用户本地 .config 文件中，并更新配置版本号
+
+---
 
 ## 本工程提供功能
 ### 窗口移动
@@ -101,6 +109,8 @@ git pull origin main
 
 ![](./images/menu-doc.png)
 
+---
+
 ## 快捷键列表
 
 请根据需要自行修改
@@ -156,6 +166,8 @@ git pull origin main
 ⌃⌘V|以模拟按键方式将剪贴板中的字符粘贴出来（解决某些网站禁止粘贴密码问题）
 ⌥/|显示/隐藏快捷键列表
 
+---
+
 ## 关于不同屏幕间的窗口移动
 
 关于窗口管理，如下两个快捷键用于在屏幕之间移动窗口
@@ -175,6 +187,8 @@ git pull origin main
 
 ![](./images/monitor-real.png)
 
+---
+
 ## 关于应用 bundle id
 
 上面配置中使用快捷键切换应用，需要拿到应用的 bundle id（请注意 bundle id 配置到 hammerspoon 中需要区分大小写，否则 console 会报错），可通过如下方式拿到：
@@ -191,6 +205,52 @@ osascript -e 'id of app "Name of App"'
 此时我们可以在 Finder 中选中邮件应用，右键：显示包内容 -> Contents -> 打开 info.plist 文件，找到 CFBundleIdentifier 配置项，该配置项的值即为 bundle id，当然此方法也适应于自己安装的应用
 
 ![image](./images/mail.png)
+
+---
+
+## 关于工程目录结构
+
+```
+.
+├── .config 用户本地配置文件，保存了用户每个功能模块的启用/禁用状态
+├── .emoji 表情包缓存目录
+├── .git
+├── .gitignore
+├── LICENSE
+├── README.md
+├── images 功能模块及 README 需要用到的图片
+│   ├── after-work.gif
+│   ├── after-work.png
+│   ├── applications.png
+│   ├── bundleid.png
+│   ├── emoji.gif
+│   ├── keystroke-visualizer.gif
+│   ├── mail.png
+│   ├── menu-doc.png
+│   ├── menu.png
+│   ├── monitor-arrangement.png
+│   ├── monitor-real.png
+│   ├── network.png
+│   ├── shortcut.png
+│   └── window.png
+├── init.lua 脚本入口
+└── modules 各个功能模块
+    ├── application.lua 应用切换模块
+    ├── base.lua 封装了 Lua 基本工具
+    ├── config.lua 默认配置，记录了每一项功能的默认启用/禁用状态
+    ├── emoji.lua 表情包搜索模块
+    ├── hotkey.lua 快捷键列表查看模块
+    ├── keystroke-visualizer.lua 按键回显模块
+    ├── menu.lua 菜单模块
+    ├── network.lua 实时网速模块
+    ├── password.lua 密码粘贴模块
+    ├── reload.lua 重载配置模块（当 ～/.hammerspoon 目录下任意 .lua 文件发生变动时，自动重新加载 Hammerspoon 配置）
+    ├── remind.lua 下班提醒模块
+    ├── update.lua 自动更新模块
+    └── window.lua 窗口管理模块
+```
+
+---
 
 ## 参考
 - [学长博客 - OSX--OSX应用快速切换方案](https://mrdear.cn/posts/osx_app_switcher.html)
