@@ -2,7 +2,7 @@
 defaultConfig = {{
     -- 配置版本号
     -- 每次新增功能项，需将版本号加 1
-    configVersion = '5'
+    configVersion = '6'
 }, {
     module = 'modules.window',
     name = '窗口管理',
@@ -19,6 +19,10 @@ defaultConfig = {{
     module = 'modules.password',
     name = '密码粘贴',
     enable = true
+}, {
+    module = 'modules.input-method',
+    name = '输入法切换',
+    enable = false
 }, {
     module = 'modules.network',
     name = '实时网速',
