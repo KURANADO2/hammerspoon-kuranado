@@ -109,5 +109,8 @@ function split(input, delimiter)
 end
 
 function trim(s)
+    if s == nil then
+        return ''
+    end
     return (s:gsub("^%s+", ""):gsub("%s+$", ""))
 end

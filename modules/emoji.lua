@@ -44,7 +44,9 @@ function request(query)
 
     choices = {}
 
-    if query == nil or trim(query) == '' then
+    query = trim(query)
+
+    if query == '' then
         return
     end
 
@@ -117,7 +119,7 @@ function preview(path)
 end
 
 -- 上下键选择表情包预览
-key = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
+select_key = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
     -- 只在 chooser 显示时，才监听键盘按下
     if not chooser:isVisible() then
         return

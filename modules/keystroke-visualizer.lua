@@ -40,7 +40,7 @@ local keycodes = {
     kreturn = {char = '↩︎', duplicate_removal = false},
 }
 
-key = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, function(event)
+visualizer_key = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.flagsChanged}, function(event)
     local type = event:getType()
     local keycode = event:getKeyCode()
     if keycode == 255 then
