@@ -77,7 +77,8 @@ function download_file(url, file_path)
         -- 同步方式下载
         -- hs.execute('curl --header \'Referer: http://kuranado.com\' --request GET ' .. url .. ' --create-dirs -o ' .. file_path)
         -- 异步方式下载
-        hs.task.new('/usr/bin/curl', async_download_callback, {'--header', 'Referer: http://kuranado.com', url, '--create-dirs', '-o', file_path}):start()
+        down_emoji_task = hs.task.new('/usr/bin/curl', async_download_callback, {'--header', 'Referer: http://kuranado.com', url, '--create-dirs', '-o', file_path})
+        down_emoji_task:start()
     end
 end
 
