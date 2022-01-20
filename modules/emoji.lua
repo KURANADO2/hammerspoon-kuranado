@@ -31,6 +31,8 @@ chooser = hs.chooser.new(function(choice)
     hs.execute(script)
     -- 直接粘贴
     hs.eventtap.keyStroke({'cmd'}, 'v')
+    -- 回车发送（2022-01-14 WeChat For Mac 3.30 版本发布后，直接粘贴 Command + V 剪贴板中的图片不会自动发送出去，需手动敲击回车才能发送出去）
+    hs.eventtap.keyStroke({}, 'return')
 end)
 chooser:width(20)
 chooser:rows(10)
@@ -171,16 +173,18 @@ hs.hotkey.bind({"alt"}, "K", function()
     chooser:show()
 end)
 
--- TODO-JING 增加延时
-chooser:queryChangedCallback(function()
-    local query = chooser:query()
-    page = 1
-    request(query)
+changed_chooser = chooser:queryChangedCallback(function()
+    hs.timer.doAfter(0.1, function()
+        local query = chooser:query()
+        page = 1
+        request(query)
+    end)
 end)
 
-chooser:hideCallback(function()
+hide_chooser = chooser:hideCallback(function()
     emoji_canvas:hide(.3)
 end)
 
 -- TODO-JING 解决中文输入法界面被遮挡问题
 -- TODO-JING 解决每次搜索卡顿问题
+-- TODO-JING 解决死锁问题
