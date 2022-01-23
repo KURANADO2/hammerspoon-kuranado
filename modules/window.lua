@@ -1,27 +1,3 @@
--- 设置显示器（显示器名称可通过在 Hammerspoon Console 控制台中输入 hs.screen.allScreens()[1]:name() 和 hs.screen.allScreens()[2]:name() 得到，更多显示器依次类推）
--- 获取显示器数目
-local monitor_num = #hs.screen.allScreens()
--- 设置主显示器
-local main_monitor = hs.screen.allScreens()[1]:id()
--- 设置副显示器
-local second_monitor = nil
-if (monitor_num >= 2)
-then
-    second_monitor = hs.screen.allScreens()[2]:id()
-end
--- 设置第三个显示器（暂未使用）
-local third = nil
-if (monitor_num >= 3)
-then
-    third = hs.screen.allScreens()[3]:id()
-end
--- 设置第四个显示器（暂未使用）
-local fourth_monitor = nil
-if (monitor_num >= 4)
-then
-    fourth_monitor = hs.screen.allScreens()[4]:id()
-end
-
 -- 关闭动画持续时间
 hs.window.animationDuration = 0
 
@@ -440,19 +416,34 @@ hs.hotkey.bind({"alt", "ctrl"}, "Return", "Max Window", function()
     win:maximize()
 end)
 
--- 主屏副屏之间的窗口移动（适用于主屏物理位置在右，副屏物理位置在左的显示器摆放布局，若不是该布局，则在系统偏好设置 -> 显示器 -> 排列下，将白色的条块拖动到右边的显示器顶部）
--- 主屏窗口移动到副屏
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", "Move To Left Screen", function()
+-- 将窗口移动到上方屏幕
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", "Move To Up Screen", function()
     local win = hs.window.focusedWindow()
     if (win) then
-        win:moveToScreen(second_monitor)
+        win:moveOneScreenNorth()
     end
 end)
 
--- 副屏窗口移动到主屏
+-- 将窗口移动到下方屏幕
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", "Move To Down Screen", function()
+    local win = hs.window.focusedWindow()
+    if (win) then
+        win:moveOneScreenSouth()
+    end
+end)
+
+-- 将窗口移动到左侧屏幕
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", "Move To Left Screen", function()
+    local win = hs.window.focusedWindow()
+    if (win) then
+        win:moveOneScreenWest()
+    end
+end)
+
+-- 将窗口移动到右侧屏幕
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", "Move To Right Screen", function()
     local win = hs.window.focusedWindow()
     if (win) then
-        win:moveToScreen(main_monitor)
+        win:moveOneScreenEast()
     end
 end)
