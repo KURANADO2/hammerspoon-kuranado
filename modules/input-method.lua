@@ -1,3 +1,7 @@
+-- 输入法切换
+
+require 'modules.shortcut'
+
 local INPUT_CHINESE = 'com.apple.inputmethod.SCIM.ITABC'
 local INPUT_ABC = 'com.apple.keylayout.ABC'
 local INPUT_HIRAGANA = 'com.google.inputmethod.Japanese.base'
@@ -14,7 +18,7 @@ function abc()
     hs.keycodes.currentSourceID(INPUT_ABC)
 end
 
--- 简体拼音
+-- 平假名
 function hiragana()
     hs.alert.show('Hiragana')
     hs.keycodes.currentSourceID(INPUT_HIRAGANA)
@@ -30,5 +34,4 @@ function toggleInput()
         hiragana()
     end
 end
-
-hs.hotkey.bind({'alt'}, 'L', toggleInput)
+hs.hotkey.bind(input_method.prefix, input_method.key, toggleInput)

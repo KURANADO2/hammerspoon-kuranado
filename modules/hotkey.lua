@@ -1,6 +1,7 @@
 -- 展示本工程快捷键列表
 
 require 'modules.base'
+require 'modules.shortcut'
 
 local screen = hs.window.focusedWindow():screen():frame()
 
@@ -183,6 +184,6 @@ end
 drawText(formatText())
 
 -- ⌥/ 显示/隐藏快捷键列表
-hs.hotkey.bind({ 'alt' }, '/', toggleHotkeysShow)
+hs.hotkey.bind(hotkey.prefix, hotkey.key, toggleHotkeysShow)
 -- Esc 关闭快捷键列表（仅在快捷键列表已显示情况下生效）
 -- hs.hotkey.bind({'zero'}, 'escape',  closeHotKeyShow)
