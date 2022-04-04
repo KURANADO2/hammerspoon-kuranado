@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/KURANADO2/hammerspoon-kuranado/main
 
 如上面这条 `curl` 命令下载不了 `install.sh`，则请打开终端代理后重试或手动下载 `install.sh` 后执行
 
-最后，Menubar 中点击 Hammerspoon `Road Config` 按钮即可
+最后，Menubar 中点击 Hammerspoon `Reload Config` 按钮即可
 
 ---
 
