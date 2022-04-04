@@ -1,6 +1,7 @@
 -- 表情包搜索
 
 require 'modules.base'
+require 'modules.shortcut'
 
 local screen = hs.window.focusedWindow():screen():frame()
 
@@ -167,7 +168,7 @@ select_key = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
     preview(row_contents.path)
 end):start()
 
-hs.hotkey.bind({"alt"}, "K", function()
+hs.hotkey.bind(emoji_search.prefix, emoji_search.key, function()
     page = 1
     chooser:query('')
     chooser:show()
