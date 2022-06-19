@@ -79,24 +79,22 @@ applications = {
     {prefix = {"Option"}, key = "V", message="VSCode", bundleId="com.microsoft.VSCode"},
     {prefix = {"Option"}, key = "F", message="Finder", bundleId="com.apple.finder"},
     {prefix = {"Option"}, key = "C", message="Chrome", bundleId="com.google.Chrome"},
-    {prefix = {"Option"}, key = "J", message="IntelliJ IDEA", bundleId="com.jetbrains.intellij"},
+    {prefix = {"Option"}, key = "I", message="IntelliJ IDEA", bundleId="com.jetbrains.intellij"},
     {prefix = {"Option"}, key = "N", message="WizNote", bundleId="cn.wiznote.desktop"},
     {prefix = {"Option"}, key = "D", message="DataGrip", bundleId="com.jetbrains.datagrip"},
     {prefix = {"Option"}, key = "T", message="iTerm2", bundleId="com.googlecode.iterm2"},
     {prefix = {"Option"}, key = "M", message="MailMaster", bundleId="com.netease.macmail"},
     {prefix = {"Option"}, key = "P", message="Postman", bundleId="com.postmanlabs.mac"},
     {prefix = {"Option"}, key = "O", message="Word", bundleId="com.microsoft.Word"},
-    {prefix = {"Option"}, key = "E", message="Excel", bundleId="com.microsoft.Excel"},
     {prefix = {"Option"}, key = "Y", message="PyCharm", bundleId="com.jetbrains.pycharm"},
     {prefix = {"Option"}, key = "R", message="Redis Desktop", bundleId="me.qii404.another-redis-desktop-manager"}
 }
 
 -- 输入法切换快捷键配置
-input_method = {
-    prefix = {
-        "Option"
-    },
-    key = "L"
+input_methods = {
+    abc = {prefix = {"Option"}, key = "J", message="ABC"},
+    chinese = {prefix = {"Option"}, key = "K", message="简体拼音"}, 
+    japanese = {prefix = {"Option"}, key = "L", message="Hiragana"}
 }
 
 -- 表情包搜索快捷键配置
@@ -104,7 +102,7 @@ emoji_search = {
     prefix = {
         "Option"
     },
-    key = "K"
+    key = "E"
 }
 
 -- 密码粘贴快捷键配置
