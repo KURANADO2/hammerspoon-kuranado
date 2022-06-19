@@ -4,7 +4,7 @@ require 'modules.shortcut'
 
 local INPUT_CHINESE = 'com.apple.inputmethod.SCIM.ITABC'
 local INPUT_ABC = 'com.apple.keylayout.ABC'
-local INPUT_HIRAGANA = 'com.google.inputmethod.Japanese.base'
+local INPUT_HIRAGANA = 'com.apple.inputmethod.Kotoeri.RomajiTyping.Japanese'
 
 -- 简体拼音
 local function chinese()
@@ -19,17 +19,6 @@ end
 -- 平假名
 local function hiragana()
     hs.keycodes.currentSourceID(INPUT_HIRAGANA)
-end
-
-local function toggleInput()
-    local current = hs.keycodes.currentSourceID()
-    -- 当前不是简体拼音，就切换为简体拼音
-    if INPUT_CHINESE ~= current then
-        chinese()
-    else
-        -- 否则切换为平假名
-        hiragana()
-    end
 end
 
 if (input_methods ~= nil) then
