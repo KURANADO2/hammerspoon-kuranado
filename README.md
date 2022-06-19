@@ -118,7 +118,7 @@ The principle is to read the latest record of the clipboard, and simulate a key 
 The three most commonly used input methods for individuals:
 - The system comes with ABC
 - The system comes with Simplified Pinyin
-- Google Japanese Input
+- The system commes with Japanese Input
 
 Shortcut | Function
 -|-
