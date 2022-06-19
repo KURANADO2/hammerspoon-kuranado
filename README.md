@@ -115,39 +115,16 @@ The principle is to read the latest record of the clipboard, and simulate a key 
 
 ### Input method switch
 
-Use shortcut keys `⌥` `L` to switch between Simplified Pinyin and Hiragana input methods
-
 The three most commonly used input methods for individuals:
 - The system comes with ABC
 - The system comes with Simplified Pinyin
 - Google Japanese Input
 
-<div align='center'>
-  <img src='./images/input-method.png' width='500'/>
-</div>
-
-<div align='center'>
-  <img src='./images/input-method2.png' width='500'/>
-</div>
-
-Using the `⇪` key to switch between Simplified Pinyin and ABC is fine, but switching between Simplified Pinyin and Japanese input methods has always been my biggest nightmare. Use the system's own switching shortcuts `⌃` `space`:
-
-<div align='center'>
-  <img src='./images/input-method3.png' width='200'/>
-</div>
-
-First: there will be a certain delay in the pop-up box (unbearable), second: you need to repeatedly press `⌃` `space` to switch among all input methods in turn (always cut through, and then turn around again). It's terrifying to have to do this hundreds of times a day within the same app.
-
-Here I provide a switching solution. If other people have a more reasonable solution, they are welcome to propose:
-
-Current input method|Shortcut key|Switch to
--|-|-
-ABC/Japanese input method|`⌥` `L`|Simplified Pinyin
-Simplified Pinyin|`⌥` `L`|Japanese Input Method
-Simplified Pinyin|`⇪`|ABC
-ABC|`⇪`| Simplified Pinyin
-
-**Note:** There are also many people who use automatic switching of the input method according to the application. For example, once you switch to IDEA, the input method is automatically switched to ABC, and once you enter WeChat, the input method is automatically switched to Simplified Pinyin... , this is indeed a good solution, of course Hammerspoon can also be implemented, but this solution is not suitable for me.
+Shortcut | Function
+-|-
+`⌥` `J`|ABC
+`⌥` `K`|Simplified Pinyin
+`⌥` `L`|Japanese Input Method
 
 ---
 
