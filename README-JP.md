@@ -12,6 +12,10 @@
 
 ---
 
+[![](./images/bilibili.png)](https://www.bilibili.com/video/BV1VR4y1N7TS?share_source=copy_web&vd_source=a06ac1449f22652843e9948a04dc214a)
+
+---
+
 - このプロジェクトが提供する機能があなたに役立つと思うなら、星をクリックするのを手伝ってください、それは大いにありがたいです、ありがとう！
 - README 画像を表示できない場合は、ラダーがハングしていて、PACファイルで `|| githubusercontent.com` が設定されていることを確認するか、グローバルモードを直接使用してください
 
@@ -85,7 +89,7 @@ git pull origin main
 
 ### 絵文字検索
 
-ショートカットキー `⌥` `K` を使用して絵文字検索機能を起動し、キーワードを入力します。**上下**キーを使用して絵文字を選択およびプレビューします。**左右**キーを使用してページをめくります。* *Enterキー**絵文字の送信に使用;`Esc` は検索ウィンドウを閉じます
+ショートカットキー `⌥` `K` を使用して絵文字検索機能を起動し、キーワードを入力します。**上下**キーを使用して絵文字を選択およびプレビューします。**左右**キーを使用してページをめくります。**Enterキー**絵文字の送信に使用; `Esc` は検索ウィンドウを閉じます
 
 <div align='center'>
   <img src='./images/emoji.gif' width='600'/>
@@ -205,6 +209,7 @@ cp shortcut.lua.example shortcut.lua
 `⌃` `⌥` `⌘` `↓`|ウィンドウを下の画面に移動します
 `⌃` `⌥` `⌘` `←`|ウィンドウを左側の画面に移動します
 `⌃` `⌥` `⌘` `→`|ウィンドウを右画面に移動します
+`⌘` &#96; |在同一应用的多个窗口之间切换（此为 Mac 系统自带快捷键）
 `⌥` `Q`|QQ を開く
 `⌥` `W`|WeChat を開く
 `⌥` `V`|VisualStudio コードを開く
@@ -283,6 +288,12 @@ osascript -e 'id of app "Name of App"'
     ├── update.lua モジュールを自動的に更新する
     └── window.lua ウィンドウ管理モジュール
 ```
+
+---
+
+## Thanks
+
+- [JetBRAINS- Licenses for Open Source Development](https://www.jetbrains.com/community/opensource/#support)
 
 ---
 

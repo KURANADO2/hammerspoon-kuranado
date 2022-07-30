@@ -12,6 +12,10 @@
 
 ---
 
+[![](./images/bilibili.png)](https://www.bilibili.com/video/BV1VR4y1N7TS?share_source=copy_web&vd_source=a06ac1449f22652843e9948a04dc214a)
+
+---
+
 - 如果你觉得本工程提供的功能对你有用，请帮忙点一个 Star，不胜感激，谢谢！
 - 若 README 图片无法显示，请确保挂了梯子，并且 PAC 文件中配置 `||githubusercontent.com`，或者直接使用全局模式
 
@@ -207,6 +211,7 @@ cp shortcut.lua.example shortcut.lua
 `⌃` `⌥` `⌘` `↓`|将窗口移动到下方屏幕
 `⌃` `⌥` `⌘` `←`|将窗口移动到左侧屏幕
 `⌃` `⌥` `⌘` `→`|将窗口移动到右侧屏幕
+`⌘` &#96; |在同一应用的多个窗口之间切换（此为 Mac 系统自带快捷键）
 `⌥` `Q` |打开 QQ
 `⌥` `W` |打开 WeChat
 `⌥` `V` |打开 Visual Studio Code
@@ -285,6 +290,12 @@ osascript -e 'id of app "Name of App"'
     ├── update.lua 自动更新模块
     └── window.lua 窗口管理模块
 ```
+
+---
+
+## 感谢
+
+- [JetBRAINS- Licenses for Open Source Development](https://www.jetbrains.com/community/opensource/#support)
 
 ---
 

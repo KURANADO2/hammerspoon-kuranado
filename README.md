@@ -12,6 +12,10 @@ English | [简体中文](./README-CN.md) | [日本語](./README-JP.md)
 
 ---
 
+[![](./images/bilibili.png)](https://www.bilibili.com/video/BV1VR4y1N7TS?share_source=copy_web&vd_source=a06ac1449f22652843e9948a04dc214a)
+
+---
+
 - If you think the functions provided by this project are useful to you, please help to click a Star, it would be greatly appreciated, thank you!
 - If the README image cannot be displayed, please make sure that the ladder is hung and `||githubusercontent.com` is configured in the PAC file, or directly use the global mode
 
@@ -205,6 +209,7 @@ Shortcut | Function
 `⌃` `⌥` `⌘` `↓`|Move the window to the lower screen
 `⌃` `⌥` `⌘` `←`|Move the window to the left screen
 `⌃` `⌥` `⌘` `→`|Move the window to the right screen
+`⌘` &#96; |在同一应用的多个窗口之间切换（此为 Mac 系统自带快捷键）
 `⌥` `Q` |Open QQ
 `⌥` `W` |Open WeChat
 `⌥` `V` |Open Visual Studio Code
@@ -283,6 +288,12 @@ At this point, we can select the mail application in the Finder, right-click: sh
     ├── update.lua Automatically update modules
     └── window.lua Window management module
 ```
+
+---
+
+## Thanks
+
+- [JetBRAINS- Licenses for Open Source Development](https://www.jetbrains.com/community/opensource/#support)
 
 ---
 
