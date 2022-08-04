@@ -26,16 +26,17 @@ function toggleAppByBundleId(appBundleID)
     end
 
     local currentFocusedWindow = application:focusedWindow()
-    if mousePositions[currentFocusedWindow:id()] ~= nil then
+    if currentFocusedWindow ~= nil and mousePositions[currentFocusedWindow:id()] ~= nil then
         hs.mouse.absolutePosition(mousePositions[currentFocusedWindow:id()])
     else
         setMouseToCenter(currentFocusedWindow)
     end
-
-    local windows = application:visibleWindows()
 end
 
 function setMouseToCenter(foucusedWindow)
+    if foucusedWindow == nil then
+        return
+    end
     local frame = foucusedWindow:frame()
     local centerPosition = hs.geometry.point(frame.x + frame.w / 2, frame.y + frame.h / 2)
     hs.mouse.absolutePosition(centerPosition)
