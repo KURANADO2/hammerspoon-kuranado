@@ -76,7 +76,19 @@ git pull origin main
 ウィンドウの移動には、[Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12) の代替手段
 
 <div align='center'>
-  <img src='./images/window.png' width='700'/>
+  <img src='./images/window_move.gif' width='700'/>
+</div>
+
+均等に分割されたグリッド (2、4、6、9、12、16 など)：
+
+<div align='center'>
+  <img src='./images/window_grid.gif' width='700'/>
+</div>
+
+左右を入れ替える：
+
+<div align='center'>
+  <img src='./images/window_swap.gif' width='700'/>
 </div>
 
 ---
@@ -179,6 +191,7 @@ cp shortcut.lua.example shortcut.lua
 
 ショートカット|機能
 -|-
+`⌃` `⌥` `z`|同じアプリの複数のウィンドウの自動表形式レイアウト
 `⌃` `⌥` `←`|左半分の画面
 `⌃` `⌥` `→`|右半分の画面
 `⌃` `⌥` `↑`|上半分の画面

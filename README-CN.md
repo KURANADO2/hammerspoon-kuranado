@@ -76,7 +76,19 @@ git pull origin main
 替代 [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12) 进行窗口移动
 
 <div align='center'>
-  <img src='./images/window.png' width='700'/>
+  <img src='./images/window_move.gif' width='700'/>
+</div>
+
+网格均分（2、4、6、9、12、16 等分）：
+
+<div align='center'>
+  <img src='./images/window_grid.gif' width='700'/>
+</div>
+
+左右交换：
+
+<div align='center'>
+  <img src='./images/window_swap.gif' width='700'/>
 </div>
 
 ---
@@ -181,6 +193,7 @@ cp shortcut.lua.example shortcut.lua
 
 快捷键|功能
 -|-
+`⌃` `⌥` `z`|同一应用的多个窗口自动网格式布局
 `⌃` `⌥` `←`|左半屏
 `⌃` `⌥` `→`|右半屏
 `⌃` `⌥` `↑`|上半屏

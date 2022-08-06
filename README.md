@@ -76,7 +76,19 @@ Click the function item with the mouse to enable/disable the function item
 Alternative to [Magnet](https://apps.apple.com/us/app/magnet/id441258766?mt=12) for window movement
 
 <div align='center'>
-  <img src='./images/window.png' width='700'/>
+  <img src='./images/window_move.gif' width='700'/>
+</div>
+
+Grid evenly divided (2, 4, 6, 9, 12, 16, etc.):
+
+<div align='center'>
+  <img src='./images/window_grid.gif' width='700'/>
+</div>
+
+Swap left and right:
+
+<div align='center'>
+  <img src='./images/window_swap.gif' width='700'/>
 </div>
 
 ---
@@ -179,6 +191,7 @@ cp shortcut.lua.example shortcut.lua
 
 Shortcut | Function
 -|-
+`⌃` `⌥` `z`|Automatic grid layout of multiple Windows of the same application
 `⌃` `⌥` `←`|Left half screen
 `⌃` `⌥` `→`|Right half screen
 `⌃` `⌥` `↑`|Top half screen
