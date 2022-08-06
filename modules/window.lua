@@ -5,7 +5,138 @@ require 'modules.shortcut'
 -- 关闭动画持续时间
 hs.window.animationDuration = 0
 
--- 窗口移动
+-- 同一应用的所有窗口自动布局
+if windows.same_application_auto_layout ~= nil then
+    hs.hotkey.bind(windows.same_application_auto_layout.prefix, windows.same_application_auto_layout.key, windows.same_application_auto_layout.message, function()
+        layout_auto_in_same_screen()
+    end)
+end
+
+-- 平铺模式 - 所有窗口在同一屏幕自动布局
+function layout_auto_in_same_screen()
+    local focusedWindow = hs.window.focusedWindow()
+    local application = focusedWindow:application()
+    -- 当前屏幕
+    local focusedScreen = focusedWindow:screen()
+    -- 同一应用的所有窗口
+    local visibleWindows = application:visibleWindows()
+    for k, visibleWindow in ipairs(visibleWindows) do
+        -- 关于 Standard window 可参考：http://www.hammerspoon.org/docs/hs.window.html#isStandard
+        -- 例如打开 Finder 就一定会存在一个非标准窗口，这种窗口需要排除
+        if not visibleWindow:isStandard() then
+            table.remove(visibleWindows, k)
+        end
+        if visibleWindow ~= focusedWindow then
+            -- 窗口所在屏幕
+            local screen = visibleWindow:screen()
+            -- 将同一应用的其他窗口移动到当前屏幕
+            visibleWindow:moveToScreen(focusedScreen)
+        end
+    end
+    -- layout_horizontal(focusedScreen:frame(), visibleWindows)
+    -- layout_vertical(focusedScreen:frame(), visibleWindows)
+    layout_grid(focusedScreen, visibleWindows)
+end
+
+-- 平铺模式-网格均分
+function layout_grid(focusedScreen, windows)
+
+    -- TODO-JING num = 3、5、7、8、10、11、13、14、15
+    -- TODO-JING せめて num = 3 の問題を消して
+
+    local layout = {
+        {
+            num = 1, row = 0, column = 0
+        },
+        {
+            num = 2, row = 0, column = 1
+        },
+        {
+            num = 4, row = 1, column = 1
+        },
+        {
+            num = 6, row = 1, column = 2
+        },
+        {
+            num = 9, row = 2, column = 2
+        },
+        {
+            num = 12, row = 2, column = 3
+        },
+        {
+            num = 16, row = 3, column = 3
+        }
+    }
+
+    local windowNum = #windows
+    local focusedScreenFrame = focusedScreen:frame()
+    for _k, item in ipairs(layout) do
+        if windowNum <= item.num then
+            local column = item.column
+            local row = item.row
+            if isVerticalScreen(focusedScreen) then
+                if item.column > item.row then
+                    column = item.row
+                    row = item.column
+                end
+            end
+            local widthForPerWindow = focusedScreenFrame.w / (column + 1)
+            local heightForPerWindow = focusedScreenFrame.h / (row + 1)
+            local nth = 1
+
+            for i = 0, column, 1 do
+                for j = 0, row, 1 do
+                    -- 已没有可用窗口
+                    if nth > windowNum then
+                        break
+                    end
+                    local window = windows[nth]
+                    local windowFrame = window:frame()
+                    windowFrame.x = focusedScreenFrame.x + i * widthForPerWindow
+                    windowFrame.y = focusedScreenFrame.y + j * heightForPerWindow
+                    windowFrame.w = widthForPerWindow
+                    windowFrame.h = heightForPerWindow
+                    window:setFrame(windowFrame)
+                    -- 让窗口获取焦点以将窗口置前
+                    window:focus()
+                    nth = nth + 1
+                end
+            end
+            break
+        end
+    end
+end
+
+-- 平铺模式 - 水平均分
+function layout_horizontal(focusedScreenFrame, windows)
+    local windowNum = #windows
+    local widthForPerWindow = focusedScreenFrame.w / windowNum
+    for i, window in ipairs(windows) do
+        local windowFrame = window:frame()
+        windowFrame.x = focusedScreenFrame.x + widthForPerWindow * (i - 1)
+        windowFrame.y = focusedScreenFrame.y
+        windowFrame.w = widthForPerWindow
+        windowFrame.h = focusedScreenFrame.h
+        window:setFrame(windowFrame)
+        window:focus()
+    end
+end
+
+-- 平铺模式 - 垂直均分
+function layout_vertical(focusedScreenFrame, windows)
+    local windowNum = #windows
+    local heightForPerWindow = focusedScreenFrame.h / windowNum
+    for i, window in ipairs(windows) do
+        local windowFrame = window:frame()
+        windowFrame.x = focusedScreenFrame.x
+        windowFrame.y = focusedScreenFrame.y + heightForPerWindow * (i - 1)
+        windowFrame.w = focusedScreenFrame.w
+        windowFrame.h = heightForPerWindow
+        window:setFrame(windowFrame)
+        window:focus()
+    end
+end
+
 -- 左半屏
 hs.hotkey.bind(windows.left.prefix, windows.left.key, windows.left.message, function()
     local win = hs.window.focusedWindow()
