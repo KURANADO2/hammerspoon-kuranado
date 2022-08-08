@@ -14,7 +14,9 @@ local mousePositions = {}
 function toggleAppByBundleId(appBundleID)
 
     local previousFocusedWindow = hs.window.focusedWindow()
-    mousePositions[previousFocusedWindow:id()] = hs.mouse.absolutePosition()
+    if previousFocusedWindow ~= nil then
+        mousePositions[previousFocusedWindow:id()] = hs.mouse.absolutePosition()
+    end
 
     hs.application.launchOrFocusByBundleID(appBundleID)
 
