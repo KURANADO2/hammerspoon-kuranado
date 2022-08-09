@@ -3,7 +3,11 @@
 require 'modules.base'
 require 'modules.shortcut'
 
-local screen = hs.window.focusedWindow():screen():frame()
+local focusedWindow = hs.window.focusedWindow()
+if focusedWindow == nil then
+    return
+end
+local screen = focusedWindow:screen():frame()
 
 -- 占屏幕宽度的 20%（居中）
 local WIDTH = 300
