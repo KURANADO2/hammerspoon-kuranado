@@ -5,66 +5,104 @@ require("modules.shortcut")
 -- 关闭动画持续时间
 hs.window.animationDuration = 0
 
--- 同一应用的所有窗口自动布局
-if windows.same_application_auto_layout ~= nil then
+-- 窗口枚举
+local AUTO_LAYOUT_TYPE = {
+    -- 网格式布局
+    GRID = "GRID",
+    -- 水平或垂直评分
+    HORIZONTAL_OR_VERTICAL = "HORIZONTAL_OR_VERTICAL",
+}
+
+-- 同一应用的所有窗口自动网格式布局
+if windows.same_application_auto_layout_grid ~= nil then
     hs.hotkey.bind(
-        windows.same_application_auto_layout.prefix,
-        windows.same_application_auto_layout.key,
-        windows.same_application_auto_layout.message,
+        windows.same_application_auto_layout_grid.prefix,
+        windows.same_application_auto_layout_grid.key,
+        windows.same_application_auto_layout_grid.message,
         function()
-            local focusedWindow = hs.window.focusedWindow()
-            local application = focusedWindow:application()
-            -- 当前屏幕
-            local focusedScreen = focusedWindow:screen()
-            -- 同一应用的所有窗口
-            local visibleWindows = application:visibleWindows()
-            for k, visibleWindow in ipairs(visibleWindows) do
-                -- 关于 Standard window 可参考：http://www.hammerspoon.org/docs/hs.window.html#isStandard
-                -- 例如打开 Finder 就一定会存在一个非标准窗口，这种窗口需要排除
-                if not visibleWindow:isStandard() then
-                    table.remove(visibleWindows, k)
-                end
-                if visibleWindow ~= focusedWindow then
-                    -- 将同一应用的其他窗口移动到当前屏幕
-                    visibleWindow:moveToScreen(focusedScreen)
-                end
-            end
-            layout_auto_in_same_screen(visibleWindows)
+            same_application(AUTO_LAYOUT_TYPE.GRID)
         end
     )
 end
 
--- 同一工作空间下的所有窗口自动布局
-if windows.same_space_auto_layout ~= nil then
+-- 同一应用的所有窗口自动水平均分或垂直均分
+if windows.same_application_auto_layout_horizontal_or_vertical ~= nil then
     hs.hotkey.bind(
-        windows.same_space_auto_layout.prefix,
-        windows.same_space_auto_layout.key,
-        windows.same_space_auto_layout.message,
+        windows.same_application_auto_layout_horizontal_or_vertical.prefix,
+        windows.same_application_auto_layout_horizontal_or_vertical.key,
+        windows.same_application_auto_layout_horizontal_or_vertical.message,
         function()
-            local spaceId = hs.spaces.focusedSpace()
-            -- 该空间下的所有 window 的 id，注意这里的 window 概念和 Hammerspoon 的 window 概念并不同，详请参考：http://www.hammerspoon.org/docs/hs.spaces.html#windowsForSpace
-            local windowIds = hs.spaces.windowsForSpace(spaceId)
-            local windows = {}
-            for k, windowId in ipairs(windowIds) do
-                local window = hs.window.get(windowId)
-                if window ~= nil then
-                    table.insert(windows, window)
-                end
-            end
-            layout_auto_in_same_screen(windows)
+            same_application(AUTO_LAYOUT_TYPE.HORIZONTAL_OR_VERTICAL)
         end
     )
 end
 
--- 平铺模式 - 所有窗口在同一屏幕自动布局
-function layout_auto_in_same_screen(windows)
-    -- layout_horizontal(focusedScreen:frame(), visibleWindows)
-    -- layout_vertical(focusedScreen:frame(), visibleWindows)
-    layout_grid(windows)
+-- 同一工作空间下的所有窗口自动网格式布局
+if windows.same_space_auto_layout_grid ~= nil then
+    hs.hotkey.bind(
+        windows.same_space_auto_layout_grid.prefix,
+        windows.same_space_auto_layout_grid.key,
+        windows.same_space_auto_layout_grid.message,
+        function()
+            same_space(AUTO_LAYOUT_TYPE.GRID)
+        end
+    )
 end
 
--- 平铺模式 - 所有窗口在同一空间自动布局
-function layout_auto_in_same_space() end
+-- 同一工作空间下的所有窗口自动水平均分或垂直均分
+if windows.same_space_auto_layout_horizontal_or_vertical ~= nil then
+    hs.hotkey.bind(
+        windows.same_space_auto_layout_horizontal_or_vertical.prefix,
+        windows.same_space_auto_layout_horizontal_or_vertical.key,
+        windows.same_space_auto_layout_horizontal_or_vertical.message,
+        function()
+            same_space(AUTO_LAYOUT_TYPE.HORIZONTAL_OR_VERTICAL)
+        end
+    )
+end
+
+function same_application(auto_layout_type)
+    local focusedWindow = hs.window.focusedWindow()
+    local application = focusedWindow:application()
+    -- 当前屏幕
+    local focusedScreen = focusedWindow:screen()
+    -- 同一应用的所有窗口
+    local visibleWindows = application:visibleWindows()
+    for k, visibleWindow in ipairs(visibleWindows) do
+        -- 关于 Standard window 可参考：http://www.hammerspoon.org/docs/hs.window.html#isStandard
+        -- 例如打开 Finder 就一定会存在一个非标准窗口，这种窗口需要排除
+        if not visibleWindow:isStandard() then
+            table.remove(visibleWindows, k)
+        end
+        if visibleWindow ~= focusedWindow then
+            -- 将同一应用的其他窗口移动到当前屏幕
+            visibleWindow:moveToScreen(focusedScreen)
+        end
+    end
+    layout_auto(visibleWindows, auto_layout_type)
+end
+
+function same_space(auto_layout_type)
+    local spaceId = hs.spaces.focusedSpace()
+    -- 该空间下的所有 window 的 id，注意这里的 window 概念和 Hammerspoon 的 window 概念并不同，详请参考：http://www.hammerspoon.org/docs/hs.spaces.html#windowsForSpace
+    local windowIds = hs.spaces.windowsForSpace(spaceId)
+    local windows = {}
+    for k, windowId in ipairs(windowIds) do
+        local window = hs.window.get(windowId)
+        if window ~= nil then
+            table.insert(windows, window)
+        end
+    end
+    layout_auto(windows, auto_layout_type)
+end
+
+function layout_auto(windows, auto_layout_type)
+    if AUTO_LAYOUT_TYPE.GRID == auto_layout_type then
+        layout_grid(windows)
+    elseif AUTO_LAYOUT_TYPE.HORIZONTAL_OR_VERTICAL == auto_layout_type then
+        layout_horizontal_or_vertical(windows)
+    end
+end
 
 -- 平铺模式-网格均分
 function layout_grid(windows)
@@ -149,23 +187,20 @@ function layout_grid(windows)
     end
 end
 
--- 平铺模式 - 水平均分
-function layout_horizontal(focusedScreenFrame, windows)
-    local windowNum = #windows
-    local widthForPerWindow = focusedScreenFrame.w / windowNum
-    for i, window in ipairs(windows) do
-        local windowFrame = window:frame()
-        windowFrame.x = focusedScreenFrame.x + widthForPerWindow * (i - 1)
-        windowFrame.y = focusedScreenFrame.y
-        windowFrame.w = widthForPerWindow
-        windowFrame.h = focusedScreenFrame.h
-        window:setFrame(windowFrame)
-        window:focus()
+-- 平铺模式 - 水平（竖屏）或垂直（横屏）均分
+function layout_horizontal_or_vertical(windows)
+    local focusedScreen = hs.screen.mainScreen()
+    local focusedScreenFrame = focusedScreen:frame()
+    -- 如果是竖屏，就水平均分，否则垂直均分
+    if isVerticalScreen(focusedScreen) then
+        layout_horizontal(windows, focusedScreenFrame)
+    else
+        layout_vertical(windows, focusedScreenFrame)
     end
 end
 
--- 平铺模式 - 垂直均分
-function layout_vertical(focusedScreenFrame, windows)
+-- 平铺模式 - 水平均分
+function layout_horizontal(windows, focusedScreenFrame)
     local windowNum = #windows
     local heightForPerWindow = focusedScreenFrame.h / windowNum
     for i, window in ipairs(windows) do
@@ -174,6 +209,21 @@ function layout_vertical(focusedScreenFrame, windows)
         windowFrame.y = focusedScreenFrame.y + heightForPerWindow * (i - 1)
         windowFrame.w = focusedScreenFrame.w
         windowFrame.h = heightForPerWindow
+        window:setFrame(windowFrame)
+        window:focus()
+    end
+end
+
+-- 平铺模式 - 垂直均分
+function layout_vertical(windows, focusedScreenFrame)
+    local windowNum = #windows
+    local widthForPerWindow = focusedScreenFrame.w / windowNum
+    for i, window in ipairs(windows) do
+        local windowFrame = window:frame()
+        windowFrame.x = focusedScreenFrame.x + widthForPerWindow * (i - 1)
+        windowFrame.y = focusedScreenFrame.y
+        windowFrame.w = widthForPerWindow
+        windowFrame.h = focusedScreenFrame.h
         window:setFrame(windowFrame)
         window:focus()
     end

@@ -10,10 +10,14 @@ shortcut_config = {
 
 -- 窗口管理快捷键配置
 windows = {
-    -- 同一应用的所有窗口自动布局
-    same_application_auto_layout = {prefix = {"Ctrl", "Option"}, key = "Z", message = "Same Application Automatic Layout"},
-    -- 同一工作空间下的所有窗口自动布局
-    same_space_auto_layout = { prefix = { "Ctrl", "Option" }, key = "X", message = "Same Space Automatic Layout" },
+    -- 同一应用的所有窗口自动网格式布局 
+    same_application_auto_layout_grid = { prefix = { "Ctrl", "Option" }, key = "Z", message = "" },
+    -- 同一应用的所有窗口自动水平均分或垂直均分 
+    same_space_auto_layout_grid = { prefix = { "Ctrl", "Option" }, key = "X", message = "" },
+    -- 同一工作空间下的所有窗口自动网格式布局
+    same_application_auto_layout_horizontal_or_vertical = { prefix = { "Ctrl", "Option" }, key = "A", message = "" },
+    -- 同一工作空间下的所有窗口自动水平均分或垂直均分 
+    same_space_auto_layout_horizontal_or_vertical = { prefix = { "Ctrl", "Option" }, key = "S", message = "" },
     -- 左半屏
     left = {prefix = {"Ctrl", "Option"}, key = "Left", message = "Left Half"},
     -- 右半屏
