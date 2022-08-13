@@ -12,6 +12,8 @@ shortcut_config = {
 windows = {
     -- 同一应用的所有窗口自动布局
     same_application_auto_layout = {prefix = {"Ctrl", "Option"}, key = "Z", message = "Same Application Automatic Layout"},
+    -- 同一工作空间下的所有窗口自动布局
+    same_space_auto_layout = { prefix = { "Ctrl", "Option" }, key = "X", message = "Same Space Automatic Layout" },
     -- 左半屏
     left = {prefix = {"Ctrl", "Option"}, key = "Left", message = "Left Half"},
     -- 右半屏

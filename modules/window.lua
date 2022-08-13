@@ -1,71 +1,113 @@
 -- 窗口管理
 
-require 'modules.shortcut'
+require("modules.shortcut")
 
 -- 关闭动画持续时间
 hs.window.animationDuration = 0
 
 -- 同一应用的所有窗口自动布局
 if windows.same_application_auto_layout ~= nil then
-    hs.hotkey.bind(windows.same_application_auto_layout.prefix, windows.same_application_auto_layout.key, windows.same_application_auto_layout.message, function()
-        layout_auto_in_same_screen()
-    end)
+    hs.hotkey.bind(
+        windows.same_application_auto_layout.prefix,
+        windows.same_application_auto_layout.key,
+        windows.same_application_auto_layout.message,
+        function()
+            local focusedWindow = hs.window.focusedWindow()
+            local application = focusedWindow:application()
+            -- 当前屏幕
+            local focusedScreen = focusedWindow:screen()
+            -- 同一应用的所有窗口
+            local visibleWindows = application:visibleWindows()
+            for k, visibleWindow in ipairs(visibleWindows) do
+                -- 关于 Standard window 可参考：http://www.hammerspoon.org/docs/hs.window.html#isStandard
+                -- 例如打开 Finder 就一定会存在一个非标准窗口，这种窗口需要排除
+                if not visibleWindow:isStandard() then
+                    table.remove(visibleWindows, k)
+                end
+                if visibleWindow ~= focusedWindow then
+                    -- 将同一应用的其他窗口移动到当前屏幕
+                    visibleWindow:moveToScreen(focusedScreen)
+                end
+            end
+            layout_auto_in_same_screen(visibleWindows)
+        end
+    )
+end
+
+-- 同一工作空间下的所有窗口自动布局
+if windows.same_space_auto_layout ~= nil then
+    hs.hotkey.bind(
+        windows.same_space_auto_layout.prefix,
+        windows.same_space_auto_layout.key,
+        windows.same_space_auto_layout.message,
+        function()
+            local spaceId = hs.spaces.focusedSpace()
+            -- 该空间下的所有 window 的 id，注意这里的 window 概念和 Hammerspoon 的 window 概念并不同，详请参考：http://www.hammerspoon.org/docs/hs.spaces.html#windowsForSpace
+            local windowIds = hs.spaces.windowsForSpace(spaceId)
+            local windows = {}
+            for k, windowId in ipairs(windowIds) do
+                local window = hs.window.get(windowId)
+                if window ~= nil then
+                    table.insert(windows, window)
+                end
+            end
+            layout_auto_in_same_screen(windows)
+        end
+    )
 end
 
 -- 平铺模式 - 所有窗口在同一屏幕自动布局
-function layout_auto_in_same_screen()
-    local focusedWindow = hs.window.focusedWindow()
-    local application = focusedWindow:application()
-    -- 当前屏幕
-    local focusedScreen = focusedWindow:screen()
-    -- 同一应用的所有窗口
-    local visibleWindows = application:visibleWindows()
-    for k, visibleWindow in ipairs(visibleWindows) do
-        -- 关于 Standard window 可参考：http://www.hammerspoon.org/docs/hs.window.html#isStandard
-        -- 例如打开 Finder 就一定会存在一个非标准窗口，这种窗口需要排除
-        if not visibleWindow:isStandard() then
-            table.remove(visibleWindows, k)
-        end
-        if visibleWindow ~= focusedWindow then
-            -- 窗口所在屏幕
-            local screen = visibleWindow:screen()
-            -- 将同一应用的其他窗口移动到当前屏幕
-            visibleWindow:moveToScreen(focusedScreen)
-        end
-    end
+function layout_auto_in_same_screen(windows)
     -- layout_horizontal(focusedScreen:frame(), visibleWindows)
     -- layout_vertical(focusedScreen:frame(), visibleWindows)
-    layout_grid(focusedScreen, visibleWindows)
+    layout_grid(windows)
 end
 
--- 平铺模式-网格均分
-function layout_grid(focusedScreen, windows)
+-- 平铺模式 - 所有窗口在同一空间自动布局
+function layout_auto_in_same_space() end
 
+-- 平铺模式-网格均分
+function layout_grid(windows)
+    local focusedScreen = hs.screen.mainScreen()
     -- TODO-JING num = 3、5、7、8、10、11、13、14、15
     -- TODO-JING せめて num = 3 の問題を消して
 
     local layout = {
         {
-            num = 1, row = 0, column = 0
+            num = 1,
+            row = 0,
+            column = 0,
         },
         {
-            num = 2, row = 0, column = 1
+            num = 2,
+            row = 0,
+            column = 1,
         },
         {
-            num = 4, row = 1, column = 1
+            num = 4,
+            row = 1,
+            column = 1,
         },
         {
-            num = 6, row = 1, column = 2
+            num = 6,
+            row = 1,
+            column = 2,
         },
         {
-            num = 9, row = 2, column = 2
+            num = 9,
+            row = 2,
+            column = 2,
         },
         {
-            num = 12, row = 2, column = 3
+            num = 12,
+            row = 2,
+            column = 3,
         },
         {
-            num = 16, row = 3, column = 3
-        }
+            num = 16,
+            row = 3,
+            column = 3,
+        },
     }
 
     local windowNum = #windows
@@ -190,7 +232,7 @@ hs.hotkey.bind(windows.down.prefix, windows.down.key, windows.down.message, func
     f.y = max.y + (max.h / 2)
     f.w = max.w
     f.h = max.h / 2
-    win:setFrame(f) 
+    win:setFrame(f)
 end)
 
 -- 左上角
@@ -382,7 +424,7 @@ hs.hotkey.bind(windows.left_1_3.prefix, windows.left_1_3.key, windows.left_1_3.m
     local screen = win:screen()
     local max = screen:frame()
     -- 如果为竖屏
-    if (isVerticalScreen(screen)) then
+    if isVerticalScreen(screen) then
         f.x = max.x
         f.y = max.y
         f.w = max.w
@@ -404,7 +446,7 @@ hs.hotkey.bind(windows.middle.prefix, windows.middle.key, windows.middle.message
     local screen = win:screen()
     local max = screen:frame()
     -- 如果为竖屏
-    if (isVerticalScreen(screen)) then
+    if isVerticalScreen(screen) then
         f.x = max.x
         f.y = max.y + (max.h / 3)
         f.w = max.w
@@ -426,7 +468,7 @@ hs.hotkey.bind(windows.right_1_3.prefix, windows.right_1_3.key, windows.right_1_
     local screen = win:screen()
     local max = screen:frame()
     -- 如果为竖屏
-    if (isVerticalScreen(screen)) then
+    if isVerticalScreen(screen) then
         f.x = max.x
         f.y = max.y + (max.h / 3 * 2)
         f.w = max.w
@@ -448,7 +490,7 @@ hs.hotkey.bind(windows.left_2_3.prefix, windows.left_2_3.key, windows.left_2_3.m
     local screen = win:screen()
     local max = screen:frame()
     -- 如果为竖屏
-    if (isVerticalScreen(screen)) then
+    if isVerticalScreen(screen) then
         f.x = max.x
         f.y = max.y
         f.w = max.w
@@ -470,7 +512,7 @@ hs.hotkey.bind(windows.right_2_3.prefix, windows.right_2_3.key, windows.right_2_
     local screen = win:screen()
     local max = screen:frame()
     -- 如果为竖屏
-    if (isVerticalScreen(screen)) then
+    if isVerticalScreen(screen) then
         f.x = max.x
         f.y = max.y + (max.h / 3)
         f.w = max.w
@@ -487,7 +529,7 @@ end)
 
 -- 判断指定屏幕是否为竖屏
 function isVerticalScreen(screen)
-    if (screen:rotate() == 90 or screen:rotate() == 270) then
+    if screen:rotate() == 90 or screen:rotate() == 270 then
         return true
     else
         return false
@@ -519,16 +561,16 @@ hs.hotkey.bind(windows.zoom.prefix, windows.zoom.key, windows.zoom.message, func
     f.h = f.h + 40
     f.x = f.x - 20
     f.y = f.y - 20
-    if (f.x < max.x) then
+    if f.x < max.x then
         f.x = max.x
     end
-    if (f.y < max.y) then
+    if f.y < max.y then
         f.y = max.y
     end
-    if (f.w > max.w) then
+    if f.w > max.w then
         f.w = max.w
     end
-    if (f.h > max.h) then
+    if f.h > max.h then
         f.h = max.h
     end
     win:setFrame(f)
@@ -554,7 +596,7 @@ end)
 -- 将窗口移动到上方屏幕
 hs.hotkey.bind(windows.to_up.prefix, windows.to_up.key, windows.to_up.message, function()
     local win = hs.window.focusedWindow()
-    if (win) then
+    if win then
         win:moveOneScreenNorth()
     end
 end)
@@ -562,7 +604,7 @@ end)
 -- 将窗口移动到下方屏幕
 hs.hotkey.bind(windows.to_down.prefix, windows.to_down.key, windows.to_down.message, function()
     local win = hs.window.focusedWindow()
-    if (win) then
+    if win then
         win:moveOneScreenSouth()
     end
 end)
@@ -570,7 +612,7 @@ end)
 -- 将窗口移动到左侧屏幕
 hs.hotkey.bind(windows.to_left.prefix, windows.to_left.key, windows.to_left.message, function()
     local win = hs.window.focusedWindow()
-    if (win) then
+    if win then
         win:moveOneScreenWest()
     end
 end)
@@ -578,7 +620,7 @@ end)
 -- 将窗口移动到右侧屏幕
 hs.hotkey.bind(windows.to_right.prefix, windows.to_right.key, windows.to_right.message, function()
     local win = hs.window.focusedWindow()
-    if (win) then
+    if win then
         win:moveOneScreenEast()
     end
 end)
