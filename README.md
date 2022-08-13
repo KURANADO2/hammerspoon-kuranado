@@ -191,7 +191,10 @@ cp shortcut.lua.example shortcut.lua
 
 Shortcut | Function
 -|-
-`⌃` `⌥` `z`|Automatic grid layout of multiple Windows of the same application
+`⌃` `⌥` `Z`|Automatic grid layout of multiple Windows of the same application
+`⌃` `⌥` `X`|Automatic grid layout of all windows in the same workspace（What is [workspace?](https://support.apple.com/guide/mac-help/work-in-multiple-spaces-mh14112/mac)？）
+`⌃` `⌥` `A`|All windows of the same app are automatically divided horizontally or vertically
+`⌃` `⌥` `S`|All windows in the same workspace are automatically divided horizontally or vertically
 `⌃` `⌥` `←`|Left half screen
 `⌃` `⌥` `→`|Right half screen
 `⌃` `⌥` `↑`|Top half screen
