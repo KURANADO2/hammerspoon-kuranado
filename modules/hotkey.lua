@@ -3,7 +3,11 @@
 require 'modules.base'
 require 'modules.shortcut'
 
-local screen = hs.window.focusedWindow():screen():frame()
+local focusedWindow = hs.window.focusedWindow()
+if focusedWindow == nil then
+    return
+end
+local screen = focusedWindow:screen():frame()
 
 local COORIDNATE_X = screen.w / 2
 local COORIDNATE_Y = screen.h / 2
