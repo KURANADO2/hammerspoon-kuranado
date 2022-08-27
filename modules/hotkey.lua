@@ -3,6 +3,9 @@
 require 'modules.base'
 require 'modules.shortcut'
 
+-- 禁用快捷键alert消息
+hs.hotkey.alertDuration = 0
+
 local focusedWindow = hs.window.focusedWindow()
 if focusedWindow == nil then
     return
