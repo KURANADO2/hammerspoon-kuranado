@@ -3,6 +3,7 @@
 require 'modules.base'
 require 'modules.shortcut'
 
+
 local focusedWindow = hs.window.focusedWindow()
 if focusedWindow == nil then
     return
@@ -191,3 +192,6 @@ drawText(formatText())
 hs.hotkey.bind(hotkey.prefix, hotkey.key, toggleHotkeysShow)
 -- Esc 关闭快捷键列表（仅在快捷键列表已显示情况下生效）
 -- hs.hotkey.bind({'zero'}, 'escape',  closeHotKeyShow)
+
+-- 禁用快捷键alert消息
+hs.hotkey.alertDuration = 0
