@@ -161,6 +161,12 @@ git pull origin main
 
 ---
 
+### 壁紙の切り替え
+
+10 分ごとに壁紙を自動的に切り替える、壁紙の出典: Bing
+
+---
+
 ### ショートカットリストビュー
 
 ショートカットキーリストを表示/非表示にするには、任意のインターフェイスで `⌥` `/` を押します
@@ -282,6 +288,7 @@ osascript -e 'id of app "Name of App"'
 ├── .emoji 絵文字キャッシュディレクトリ
 ├── .git
 ├── .gitignore
+├── .wallpaper 壁紙キャッシュ ディレクトリ
 ├── LICENSE
 ├── README.md
 ├── images modules と README に必要な写真
@@ -302,6 +309,7 @@ osascript -e 'id of app "Name of App"'
     ├── shortcut.lua ユーザー定義のショートカットキーに使用され、このファイルは .gitignore に追加されました。そのようなファイルがない場合は、コマンド cp shortcut.lua.example shortcut.lua を実行してコピーを作成してください
     ├── shortcut.lua.example ショートカットキー構成ファイルの例。ユーザーはこのファイルを変更しないでください
     ├── update.lua モジュールを自動的に更新する
+    ├── .wallpaper 壁紙スイッチモジュール
     └── window.lua ウィンドウ管理モジュール
 ```
 
@@ -324,3 +332,4 @@ osascript -e 'id of app "Name of App"'
 - [GitHub - ashfinal/awesome-hammerspoon](https://github.com/ashfinal/awesome-hammerspoon)
 - [GitHub - forecho/hammerspoon-config](https://github.com/forecho/hammerspoon-config)
 - [Is it possible to show what a keycode being pressed is?](https://github.com/Hammerspoon/hammerspoon/issues/2937)
+- [GitHub - niumoo/bing-wallpaper](https://github.com/niumoo/bing-wallpaper)

@@ -163,6 +163,12 @@ git pull origin main
 
 ---
 
+### 壁纸切换
+
+每 10 min 自动切换一张壁纸，壁纸来源：Bing
+
+---
+
 ### 快捷键列表查看
 
 任意界面下按 `⌥` `/` 显示/隐藏快捷键列表
@@ -284,6 +290,7 @@ osascript -e 'id of app "Name of App"'
 ├── .emoji 表情包缓存目录
 ├── .git
 ├── .gitignore
+├── .wallpaper 壁纸缓存目录
 ├── LICENSE
 ├── README.md
 ├── images 功能模块及 README 需要用到的图片
@@ -304,6 +311,7 @@ osascript -e 'id of app "Name of App"'
     ├── shortcut.lua 用于用户自定义快捷键，此文件已加入 .gitignore，若无该文件，则执行命令 cp shortcut.lua.example shortcut.lua 创建一份即可
     ├── shortcut.lua.example 快捷键配置文件示例，用户请勿修改此文件
     ├── update.lua 自动更新模块
+    ├── wallpaper.lua 壁纸切换模块
     └── window.lua 窗口管理模块
 ```
 
@@ -326,3 +334,4 @@ osascript -e 'id of app "Name of App"'
 - [GitHub - ashfinal/awesome-hammerspoon](https://github.com/ashfinal/awesome-hammerspoon)
 - [GitHub - forecho/hammerspoon-config](https://github.com/forecho/hammerspoon-config)
 - [Is it possible to show what a keycode being pressed is?](https://github.com/Hammerspoon/hammerspoon/issues/2937)
+- [GitHub - niumoo/bing-wallpaper](https://github.com/niumoo/bing-wallpaper)

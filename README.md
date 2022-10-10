@@ -161,6 +161,12 @@ Interested guys are welcome to propose implementation ideas, or directly contrib
 
 ---
 
+### Wallpaper switch
+
+Automatically switch a wallpaper every 10 minutes, wallpaper source: Bing
+
+---
+
 ### Shortcut list view
 
 Press `⌥` `/` in any interface to show/hide the shortcut key list
@@ -282,6 +288,7 @@ At this point, we can select the mail application in the Finder, right-click: sh
 ├── .emoji Emoji cache directory
 ├── .git
 ├── .gitignore
+├── .wallpaper Wallpaper cache directory
 ├── LICENSE
 ├── README.md
 ├── images Pictures needed for function modules and README
@@ -302,6 +309,7 @@ At this point, we can select the mail application in the Finder, right-click: sh
     ├── shortcut.lua Used for user-defined shortcut keys, this file has been added to .gitignore, if there is no such file, execute the command cp shortcut.lua.example shortcut.lua to create a copy
     ├── shortcut.lua.example Example of shortcut key configuration file, users should not modify this file
     ├── update.lua Automatically update modules
+    ├── wallpaper.lua Wallpaper switch module
     └── window.lua Window management module
 ```
 
@@ -324,3 +332,4 @@ At this point, we can select the mail application in the Finder, right-click: sh
 - [GitHub - ashfinal/awesome-hammerspoon](https://github.com/ashfinal/awesome-hammerspoon)
 - [GitHub - forecho/hammerspoon-config](https://github.com/forecho/hammerspoon-config)
 - [Is it possible to show what a keycode being pressed is?](https://github.com/Hammerspoon/hammerspoon/issues/2937)
+- [GitHub - niumoo/bing-wallpaper](https://github.com/niumoo/bing-wallpaper)
