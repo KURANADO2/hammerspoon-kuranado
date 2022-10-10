@@ -1,12 +1,11 @@
 -- 功能菜单
 
-require 'modules.base'
-require 'modules.config'
+require("modules.base")
+require("modules.config")
 
 local menubar = hs.menubar.new()
 
 function renderMenubar(config)
-
     -- 用于存储所有菜单项
     local menudata = {}
 
@@ -32,7 +31,7 @@ function renderMenubar(config)
                 saveConfig(config)
                 -- 重新加载 Hammerspoon 所有配置
                 hs.reload()
-            end
+            end,
         }
         table.insert(menudata, item)
         -- 分割线
@@ -46,20 +45,20 @@ function renderMenubar(config)
 
     -- 默认配置
     table.insert(menudata, {
-        title = '恢复默认配置',
+        title = "恢复默认配置",
         fn = function()
             -- 持久化配置文件
             saveConfig(defaultConfig)
             -- 重新加载 Hammerspoon 所有配置
             hs.reload()
-        end
+        end,
     })
-    local icon = hs.image.imageFromPath(base_path .. 'images/menu.png')
+    local icon = hs.image.imageFromPath(base_path .. "images/menu.png")
     -- 调整图标大小
-    local iconCopied = icon:setSize({w = 25, h = 25}, true)
+    local iconCopied = icon:setSize({ w = 25, h = 25 }, true)
     menubar:setIcon(iconCopied)
     -- menubar:setTitle('KURANADO')
-    menubar:setTooltip('启用/禁用配置')
+    menubar:setTooltip("启用/禁用配置")
     menubar:setMenu(menudata)
 end
 
