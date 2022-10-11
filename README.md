@@ -17,6 +17,11 @@ English | [简体中文](./README-CN.md) | [日本語](./README-JP.md)
 ---
 
 - If you think the functions provided by this project are useful to you, please help to click a Star, it would be greatly appreciated, thank you!
+
+<div align='left'>
+  <img src='./images/star-hoshii.png' width='200'/>
+</div>
+
 - If the README image cannot be displayed, please make sure that the ladder is hung and `||githubusercontent.com` is configured in the PAC file, or directly use the global mode
 
 ---

@@ -17,6 +17,11 @@
 ---
 
 - 如果你觉得本工程提供的功能对你有用，请帮忙点一个 Star，不胜感激，谢谢！
+
+<div align='left'>
+  <img src='./images/star-hoshii.png' width='200'/>
+</div>
+
 - 若 README 图片无法显示，请确保挂了梯子，并且 PAC 文件中配置 `||githubusercontent.com`，或者直接使用全局模式
 
 ---
