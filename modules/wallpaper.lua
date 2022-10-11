@@ -5,7 +5,7 @@ BING_WALLPAPER_API =
 BING_DOMAIN = "https://cn.bing.com"
 CACHE_DIR = os.getenv("HOME") .. "/.hammerspoon/.wallpaper/"
 
-function download_file(url, save_path)
+local function download_file(url, save_path)
     if not file_exists(save_path) then
         -- 异步下载
         local down_wallpaper_task =
@@ -14,7 +14,7 @@ function download_file(url, save_path)
     end
 end
 
-function async_download_callback(exitCode, stdOut, stdErr)
+local function async_download_callback(exitCode, stdOut, stdErr)
     -- 何もしない
     print("exitCode:", exitCode, "stdOut:", stdOut, "stdErr:", stdErr)
 end
