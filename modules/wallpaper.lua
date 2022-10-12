@@ -111,4 +111,4 @@ end
 -- 每 10 min 切换一次壁纸
 switch_wallpaper_timer = hs.timer.doEvery(600, switch_wallpaper, true):start()
 -- 每天自动执行一次非今日壁纸删除，以减小磁盘占用
-delete_wallpaper_timer = hs.timer.doEvery(86400, switch_wallpaper, true):start()
+delete_wallpaper_timer = hs.timer.doEvery(86400, delete_wallpaper, true):start()
