@@ -2,12 +2,12 @@
   local function DefaultIM()
     --hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")
     -- hs.keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hans")
-    hs.keycodes.currentSourceID("com.baidu.inputmethod.BaidulM.pinyin")
+    hs.keycodes.currentSourceID("com.baidu.inputmethod.BaiduIM.pinyin")
   end
   local function Chinese()
     --hs.keycodes.currentSourceID("com.sogou.inputmethod.sogou.pinyin")
     -- hs.keycodes.currentSourceID("com.apple.inputmethod.SCIM.ITABC")
-    hs.keycodes.currentSourceID("com.baidu.inputmethod.BaidulM.pinyin")
+    hs.keycodes.currentSourceID("com.baidu.inputmethod.BaiduIM.pinyin")
   end
   
   local function English()
