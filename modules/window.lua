@@ -592,12 +592,22 @@ hs.hotkey.bind(windows.center.prefix, windows.center.key, windows.center.message
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
-
+    local size = max.w / 2
+    
     f.x = max.x + (max.w / 4)
     f.y = max.y + (max.h / 4)
     f.w = max.w / 2
     f.h = max.h / 2
     win:setFrame(f)
+
+    --如果应用窗口有最小限制,则根据最小窗口居中
+    if win:frame().w > size then 
+        f.x = (max.w-win:frame().w)/2
+        f.y = (max.h -win:frame().h)/2 
+        f.w = win:frame().w  
+        f.h = win:frame().h
+        win:setFrame(f)
+    end
 end)
 
 -- 等比例放大窗口
