@@ -31,6 +31,11 @@ defaultConfig = {
         enable = false,
     },
     {
+        module = "modules.im-autoSelect",
+        name = "自动输入法",
+        enable = false,
+    },
+    {
         module = "modules.network",
         name = "实时网速",
         enable = true,
