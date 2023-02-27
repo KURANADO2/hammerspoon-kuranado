@@ -3,7 +3,7 @@ defaultConfig = {
     {
         -- 配置版本号
         -- 每次新增功能项，需将版本号加 1
-        configVersion = "7",
+        configVersion = "8",
     },
     {
         module = "modules.window",
