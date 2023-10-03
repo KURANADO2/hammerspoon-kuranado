@@ -203,9 +203,9 @@ cp shortcut.lua.example shortcut.lua
 ショートカット|機能
 -|-
 `⌃` `⌥` `Z`|同じアプリの複数のウィンドウの自動表形式レイアウト
-`⌃` `⌥` `X`|同じワークスペース内のすべてのウィンドウの自動グリッド レイアウト（[ワークスペース](https://support.apple.com/zh-cn/guide/mac-help/mh14112/mac)とは？）
+`⌃` `⌥` `X`|同じ Mission Control Space 内のすべてのウィンドウの自動グリッド レイアウト（[Mission Control Space](https://support.apple.com/zh-cn/guide/mac-help/mh14112/mac)とは？）
 `⌃` `⌥` `A`|同じアプリのすべてのウィンドウが自動的に水平または垂直に分割されます
-`⌃` `⌥` `S`|同じワークスペース内のすべてのウィンドウが自動的に水平または垂直に分割されます
+`⌃` `⌥` `S`|同じ Mission Control Space 内のすべてのウィンドウが自動的に水平または垂直に分割されます
 `⌃` `⌥` `←`|左半分の画面
 `⌃` `⌥` `→`|右半分の画面
 `⌃` `⌥` `↑`|上半分の画面
