@@ -82,17 +82,9 @@ function same_application(auto_layout_type)
     layout_auto(visibleWindows, auto_layout_type)
 end
 
+-- Same Mission Control Space(What is Mission Control Space? Please see: https://support.apple.com/zh-cn/guide/mac-help/mh35798/14.0/mac/14.0)
 function same_space(auto_layout_type)
-    local spaceId = hs.spaces.focusedSpace()
-    -- 该空间下的所有 window 的 id，注意这里的 window 概念和 Hammerspoon 的 window 概念并不同，详请参考：http://www.hammerspoon.org/docs/hs.spaces.html#windowsForSpace
-    local windowIds = hs.spaces.windowsForSpace(spaceId)
-    local windows = {}
-    for k, windowId in ipairs(windowIds) do
-        local window = hs.window.get(windowId)
-        if window ~= nil then
-            table.insert(windows, window)
-        end
-    end
+    local windows = hs.window.filter.defaultCurrentSpace:getWindows()
     layout_auto(windows, auto_layout_type)
 end
 
