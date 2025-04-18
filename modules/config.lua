@@ -18,12 +18,12 @@ defaultConfig = {
     {
         module = "modules.emoji",
         name = "表情包搜索",
-        enable = true,
+        enable = false,
     },
     {
         module = "modules.password",
         name = "密码粘贴",
-        enable = true,
+        enable = false,
     },
     {
         module = "modules.input-method",
@@ -63,6 +63,11 @@ defaultConfig = {
     {
         module = "modules.update",
         name = "自动检查更新",
+        enable = true,
+    },
+    {
+        module = "modules.clipboard",
+        name = "剪切板历史",
         enable = true,
     },
 }
